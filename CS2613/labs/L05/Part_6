@@ -1,0 +1,60 @@
+#lang racket
+
+(define (my-map f lst)
+      (match lst
+        ['() '()]
+        [(cons head tail) (cons (f head)
+                                (my-map f tail))]))
+
+(define (my-map2 f lst)
+      (match lst
+        ['() '()]
+        [(list head tail ...) (cons (f head)
+                                    (my-map2 f tail))]))
+
+    (module+ test
+      (require rackunit)
+      (check-equal? (my-map sub1 '(1 2 3)) '(0 1 2))
+      (check-equal? (my-map2 sub1 '(1 2 3)) '(0 1 2)))
+
+(define (list-length2 lst)
+  (match lst
+    ['() 0]
+    [(list fst rst ...) (add1 (list-length2 rst))]))
+
+(define (list-length3 lst)
+  (match lst
+    ['() 0]
+    [(cons fst rst) (add1 (list-length3 rst))]))
+
+(module+ test
+    (require rackunit)
+    (check-equal? (list-length2 '(1 2 3)) 3)
+    (check-equal? (list-length2 '()) 0))
+
+
+(define (calc expr)
+  (match expr
+    [(? number? n) n]
+    [`(plus ,l ,r) (+ (calc l) (calc r))]
+    [_ (error 'calc "syntax error")]))
+    
+(module+ test
+  (require rackunit)
+  (check-equal? (calc '(plus 1 2)) 3)
+  (check-equal? (calc '(plus (plus 1 2) 3)) 6))
+
+(define (calc2 expr)
+  (match expr
+    [(? number? n) n]
+    [`(plus ,l ,r) (+ (calc2 l) (calc2 r))]
+    [`(times ,l ,r) (* (calc2 l) (calc2 r))]
+    [`(sub ,l ,r) (- (calc2 l) (calc2 r))]
+    [`(div ,l ,r) (/ (calc2 l) (calc2 r))]
+    [_ (error 'calc2 "syntax error")]))
+
+(module+ test
+  (require rackunit)
+  (check-equal? (calc2 '(times (plus 1 2) 3)) 9)
+  (check-equal? (calc2 '(div (times (plus 1 2) 3) 3)) 3)
+  (check-equal? (calc2 '(sub (div (times (plus 1 2) 3) 3) 3)) 0))

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Lab 05</title>
+    <meta name="description" content="Lab 05 - Tail Recursion / For loops / Pattern Matching:  In Lab 05, I learned about the Tail Recursion, for loops and pattern matching in racket. Tail resursion is a instance of recursion, where the return value of a method or a function is calculated as ...">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="PUBLISHED">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="http://www.example.com/2022/09/lab-05.html">
+    <link rel="next" href="/2022/09/lab-04.html">
+    <link rel="prev" href="/2022/09/lab-06.html">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+
+      <a href="/index.html" class="navbar-brand">My Blog Brand</a>
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbar_collapse" aria-controls="navbar_collapse"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_collapse">
+          <ul class="navbar-nav mr-auto">
+
+
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b>
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/tags/PUBLISHED.html">PUBLISHED</a>
+              </div>
+            </li>
+
+            <li>
+              <a class="nav-link" href="/About.html">About</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.atom.xml">Atom</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.rss.xml">RSS</a>
+            </li>
+          </ul>
+      </div>
+
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+
+
+          <article>
+  <header>
+    <h1>Lab 05</h1>
+    <p class='date-and-tags'>
+<time datetime="2022-09-27" pubdate="true">2022-09-27</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-05---tail-recursion--for-loops--pattern-matching">Lab 05 - Tail Recursion / For loops / Pattern Matching</h1>
+
+<p>In Lab 05, I learned about the Tail Recursion, for loops and pattern matching in racket. Tail resursion is a instance of recursion, where the return value of a method or a function is calculated as a call to itself. We used a program which counts odds from a given list to understand this concept. Also, the debugger was used to identify how deep the stack goes. <a href="https://towardsdatascience.com/what-is-tail-recursion-elimination-or-why-functional-programming-can-be-awesome-43091d76915e" title="Tail Recursion">Tail Recursion</a>. Also, I learned and practiced for loops in Racket. Many Racket programmers like to use for loops over tail recursion since it is simple and easier to construct. Also, we used the same count odds program to understand and practice tail recursion. In both tail recursion and for loops, we need a counter variable. Also, I learned about pattern matching in racket which is a interesting and useful feature. Pattern matching is used in syntax-case to define macros, but also in more familiar function definition using match. I used few different programs to understand this concept such as a program that finds the length of the list and calculate the sum of two integers to understand the parsing with match concept.</p>
+
+<p>Tail Recursion and For loops were familiar concepts for me from this lab because I have learned and practiced tail recursion in java in one of my other courses. Pattern matching was a new interesting concept for me.</p>
+
+<p>As a new skill, I practiced writing pattern matching programs and the exercises provided in the lab were very helpful for me to understand and practice the concept.</p>
+
+<p>Passing with match was a very exciting concept for me and it was hard for me to understand it first, but after I read the documentation, I was able to understand the concept.</p>
+
+<p>I was given to write two new programs to practice passing with match concept and it was easy since I practiced the program that was given in the lab.</p>
+
+<p><code>Number Of Words: 451,</code> <code>Average Reading Time: 4-5 minutes</code></p>
+<!-- more-->
+  <footer>
+  <div class="row justify-content-center">
+    <nav aria-label="Page Navigation">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="/2022/09/lab-04.html"
+             aria-label="Previous">
+            <span aria-hidden="true">&larr; Lab 04</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/2022/09/lab-06.html"
+             aria-label="Next">
+            <span aria-hidden="true">Lab 06 &rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+        <p>Using <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>.</p>
+        <p><em>Your legal notice here</em>.</p>
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

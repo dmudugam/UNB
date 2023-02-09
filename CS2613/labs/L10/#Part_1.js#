@@ -1,0 +1,8 @@
+function timePlus(time1, time2) {
+    let mins = (time1.mins + time2.mins) % 60;
+    let hours = time1.hours + time2.hours + Math.floor((time1.mins+time2.mins)/60);
+    return {'hours': hours, 'mins': mins};
+}
+
+console.log(timePlus({hours: 10, mins:30}, {hours: 17, mins:47}));
+

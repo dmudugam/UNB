@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Posts tagged 'PUBLISHED'</title>
+    <meta name="description" content="Posts tagged 'PUBLISHED'">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="PUBLISHED">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="http://www.example.com/tags/PUBLISHED.html">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/PUBLISHED.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/PUBLISHED.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+
+      <a href="/index.html" class="navbar-brand">My Blog Brand</a>
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbar_collapse" aria-controls="navbar_collapse"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_collapse">
+          <ul class="navbar-nav mr-auto">
+
+
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b>
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/tags/PUBLISHED.html">PUBLISHED</a>
+              </div>
+            </li>
+
+            <li>
+              <a class="nav-link" href="/About.html">About</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/PUBLISHED.atom.xml">Atom</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/PUBLISHED.rss.xml">RSS</a>
+            </li>
+          </ul>
+      </div>
+
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+          <h1>Posts tagged <em>PUBLISHED</em></h1>
+
+          <article>
+  <header>
+    <h2><a href='/2022/11/lab-20.html'>Lab 20</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-11-29" pubdate="true">2022-11-29</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-20---using-arrayfun--fully-vectorizing--cell-arrays--variable-length-argument-lists">Lab 20 - Using Arrayfun / Fully vectorizing / Cell Arrays / Variable-length argument lists</h1>
+
+<p>In Lab 20, I learned about using arrayfun and I used the practice example from the previous lab. I measure the execution time in loops and matrix execution times. I observed that the computation time for matrix is lower than the loop version and when the size is double the time does not doubled. Also, I learned about fully vectorizing using examples given in the lab. Vectorization is the process of converting an algorithm from operating on a single value at a time to operating on a set of values at one time. I tried to improve the execution time of arraydelta using vectorization and I could notice that it is very sensitive to the size of the range. In addition, I learned about cell arrays which means a data type with indexed data containers called cells, where each cell can contain any type of data. Also, the timeit function used in the lab 20 only works for single argument functions, octave provides a special input argument 
+ <i>varargin</i>, which collects all remaining arguments into a cell array, proving similar funcionality to the 
+ <i>.rest</i> argument in racket, or the 
+ <i>...rest</i> argument in JavaScript. I completed the given practice example in the lab to learn this concept which shown below,</p>
+
+<pre>
+function timeit(reps, func, varargin)
+    times = zeros(reps, 1);
+
+    for i=1:reps
+      tic(); func(varargin{:}); times(i) = toc();
+    end
+
+    times = sort(times);
+    fprintf ('%s\tmedian=%.3fms median=%.3fms total=%.3fms\n',func2str(func), median(times)*1000,
+             mean(times)*1000, sum(times)*1000);
+endfunction
+
+%!test "nullary function"
+%! timeit(10000,@rand)
+
+%!test "unary function"
+%! timeit(10000,@rand,1)
+
+%!test "Binary function"
+%! timeit(10000,@plus,1,2)
+
+%!test "Ternery function"
+%! timeit(10000,@plus,1,2,3)</pre>
+
+<p>Cell arrays is a new concept for me and I have not worked with cell arrays before. Cell arrays was hard, but after following the given reference material it was easy to understand the concept.</p>
+
+<p>I practiced writing vectorization functions which is interesting.</p>
+
+<p>I had hard time understanding cell arrays at first, but after reading the materials I was able to understand and it was interesting to me.</p>
+
+<p>In the lab, a reference was given to learn more about <a href="https://docs.octave.org/v4.0.3/Test-Functions.html">varagin</a> which is very informative and I was able to understand the concept clearly with the material.</p>
+
+<p><code>Number Of Words: 380</code> <code>Average Reading Time: 2-3 minutes</code></p>
+  <footer>
+    <a href='/2022/11/lab-20.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/11/lab-19.html'>Lab 19</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-11-24" pubdate="true">2022-11-24</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-19---working-with-grids--defining-and-testing-a-function--making-3d-plots">Lab 19 - Working With Grids / Defining and testing a function / Making 3D plots</h1>
+
+<p>In Lab 19, I learned how to work with grids and Octave has a notation for arrays that we can use to initialize arrays 
+ <i>r = [-1:0.5:1]</i>. Also, there is a built in function called <a href="https://www.gnu.org/software/octave/doc/v4.2.1/Three_002dDimensional-Plots.html#XREFmeshgrid">meshgrid</a> where it gives cartesian products of two arrays. Moreover, we can plot the surface with 
+ <i>surf()</i> However, the more points we will use the surface will be smoother. In addition, I learned to define a test and a testing function where I practiced that using a math equation which is 
+ <i>δ(β, a, b) = βa·b - (β-1)b·b</i>. I used the following program to define a the test cases.</p>
+
+<pre>
+## compute βa·b - (β-1)b·b
+## a, b are assumed to be column vectors, beta is a scalar
+
+function ret = delta(beta, a, b)
+  ret = beta*dot(a,b) - (beta-1)*dot(b,b)
+endfunction
+
+
+%% delta(0,a,b) = |b|²
+%!test
+%! a = rand(2,1);
+%!b = rand(2,1);
+%!assert(delta(0,a,b),norm(b)^2,eps);
+
+%% delta(1,a,b) = a.b
+%!test
+%!a=rand(2,1);
+%!b=rand(2,1);
+%!assert(delta(1,a,b), dot(a,b), eps);
+
+%% delta(2,a,b) = 2a.b - |b|²
+%!test
+%!a =rand(2,1);
+%!b=rand(2,1);
+%!assert(delta(2,a,b), 2*dot(a,b)-norm(b)^2,eps);</pre>
+
+<p>Plotting surfaces is quite new to me and I and working with grids as well because I have never worked with grids before in any other language.</p>
+
+<p>I practiced defining test cases and plotting 3D plots and creating surfaces as well.</p>
+
+<p>The plotting 3D plots is very interesting because it graphically very nice to see and we are able to rotate the graph and identify all the point which is easier if we are doing linear algebra.</p>
+
+<p>In the lab, a reference was given to learn more about Octave unit testing. <a href="https://docs.octave.org/v4.0.3/Test-Functions.html">Octave unit testing</a>. Also, another reference was given to learn about octave anonymous functions. <a href="https://docs.octave.org/v4.2.0/Anonymous-Functions.html">octave anonymous functions</a>.</p>
+
+<p><code>Number Of Words: 390</code> <code>Average Reading Time: 2-3 minutes</code></p>
+  <footer>
+    <a href='/2022/11/lab-19.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/11/lab-18.html'>Lab 18</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-11-22" pubdate="true">2022-11-22</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-18---counter-generator-and-classes--running-octave--fibonaccci-as-matrix-multiplication--performance-comparison">Lab 18 - Counter, Generator, and Classes / Running Octave / Fibonaccci as matrix multiplication / Performance Comparison</h1>
+
+<p>In Lab 18, I learned about Python counter, generators, and classes. I used examples from Lab 17 to practice some of these concepts. However, in this lab I used a compatible interface by implementing a python class. I could observe that the implimentation is closer to the closure based version of Lab 17 than the original generator version. Also, I used the Fibonacci example from Lab 17 and improved it to use with the generator from the Lab 18. Also, I started learning a new language which is called Octave. Ocatve has a GUI unlike other languages where you can start the GUI by running the command 
+ <i>ocatve --gui</i> or can access the REPL by running the command octave in the command prompt. My first program with octave was Fibonacci where I practiced running octave programs. Moreover, I wrote some unit test cases and also I learned about Fibonacci as matrix multiplication. I also did some perforamce comparison and I found that loops are generally slower than matrix operations which can be done in a single call to an optimized library. This is strategy is generally called vectorization and applies in variety of languages. I used the following program to do the comparison,</p>
+
+<pre>
+# Based on an example from the Julia microbenchmark suite.
+
+function timeit(func, argument, reps)
+    times = zeros(reps, 1);
+
+    for i=1:reps
+      tic(); func(argument); times(i) = toc();
+    end
+
+    times = sort(times);
+    fprintf ('%s\tmedian=%.3fms mean=%.3fms total=%.3fms\n',func2str(func), median(times)*1000,
+             mean(times)*1000, sum(times)*1000);
+endfunction</pre>
+
+<p>Octave is a new language for me, but I have heard about octave before. I have used MATLAB before and I find octave is similar to MATLAB except for some features.</p>
+
+<p>I practiced writing python classes with counter and generators which was interesting. Moreover, I practiced writing Fibonacci numbers in python and octave as well.</p>
+
+<p>The vectorization stratergy is amazing where using matrix operations is faster than using loops.</p>
+
+<p>In the lab, a reference was given to learn more about octave where I could find all the documentation for octave and it is very easy to understand as well. <a href="https://www.gnu.org/software/octave/doc/interpreter/Timing-Utilities.html">Octave</a>. Also, another reference was given to learn about octave function handles where I could read about function handles. <a href="https://docs.octave.org/interpreter/Function-Handles.html#Function-Handles">Function Handles</a>.</p>
+
+<p><code>Number Of Words: 410</code> <code>Average Reading Time: 3-4 minutes</code></p>
+  <footer>
+    <a href='/2022/11/lab-18.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/11/lab-17.html'>Lab 17</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-11-17" pubdate="true">2022-11-17</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-17---generators--fibonacci--sieve--performance-comparison">Lab 17 - Generators / Fibonacci / Sieve / Performance Comparison</h1>
+
+<p>In Lab 17, I learned about generators in python and the first generator example from the book is the 
+ <i>make_counter(x)</i>. After, I run the program I was able to see a delay and I used the 
+ <i>pudb3</i> debugger to trace the code and I could see that 
+ <i>next</i> and 
+ <i>yield</i> jump back and forth between two sequences of execution. Also, I learned about Fibonacci number program by the second generator example given in the book which is 
+ <i>fib(max)</i>. In addition, I used the Sieve practice problem to practice python generators. Also, I did performance comparison using the practice problem that was given in the lab and the most common tradeoffs in computing is time versus memory. There is a technique calle memoization uses more memory to cache answers. There is a opposite tradeoff, using more time for less memory. I used the following practice problem to compare the benefits,</p>
+
+<pre>
+import sieve
+import sievegen
+import timeit
+
+print('sieve={:s}'.format(str(sieve.sieve(10))))
+print('sievegen={:s}'.format(str(sievegen.sieve(10))))
+
+print(timeit.timeit("sieve.sieve(10000)","import sieve",number=100))
+print(timeit.timeit("sievegen.sieve(10000)", "import sievegen",number=100))
+print(timeit.timeit("[x for x in sievegen.sieve(10000)]", "import sievegen",number=100))</pre>
+
+<p>Memoization was a new concept for me since I have not learned that concept and it is interesting that how you can make your code efficient and faster with these kind of techniques.</p>
+
+<p>I practiced writing generators with the problems given to me in the lab such as 
+ <i>fib(max)</i> and 
+ <i>make_counter(x)</i>.</p>
+
+<p>It is interesting how the techniques like memoization helps to improve the execution speed of the code and there is always a tradeoff.</p>
+
+<p>In the lab, a very good resouce was given to read to learn more about python concepts called <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin">DiP3</a> which is very useful and informative. Also, a <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/generators.html">Closures &amp; Generators</a> reference was given in the lab to read and get familiarized with the topic.</p>
+
+<p><code>Number Of Words: 402</code> <code>Average Reading Time: 2-3 minutes</code></p>
+  <footer>
+    <a href='/2022/11/lab-17.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/11/lab-16.html'>Lab 16</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-11-15" pubdate="true">2022-11-15</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-16---regular-expressions--stripping-quotes--handling-quoted-commas--parsing-more-columns">Lab 16 - Regular Expressions / Stripping Quotes / Handling Quoted Commas / Parsing more Columns</h1>
+
+<p>In Lab 16, I learned about Regular Expressions in Python, regular expressions are a domain specific language that allow is to specify complicated string operations. 
+ <i>$</i> is used to identify the end of the string and 
+ <i>^</i> is used to identify the begining of the string. Also, I learned how to use 
+ <i>findall</i> function. Also, I learned about stripping quotes. In general, entries of CSV files can have quotes, but these are not consider part of the content. Also, I learned how to handle quoted commas, I used practice problems given in the lab to learn this concept. In addition, I learned how to parse more columns using a practice problem that was given in the lab exercise, the completed program is as follows,</p>
+
+<pre>
+def split_row(string):
+	col_regex = re.compile(r'("[^"]*"|[^,]+)')
+	return [strip_quotes(col) for col in col_regex.findall(string) ]</pre>
+
+<p>Stripping quotes was a new concept for me since I have not used that in any language, but it was not hard and it can be easily understandable after going through the lab exercises.</p>
+
+<p>I practiced writing regular expressions with this lab.</p>
+
+<p>It is interesting how multiple columns are parsed and it has to be handled seperately.</p>
+
+<p>In the lab, a very good resouce was given to read to learn more about python concepts called <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin">DiP3</a> which is very useful and informative. Also, a <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/regular-expressions.html#streetaddresses">Case Study</a> was given in the lab to read and get familiarized with the topic.</p>
+
+<p><code>Number Of Words: 390</code> <code>Average Reading Time: 3-4 minutes</code></p>
+  <footer>
+    <a href='/2022/11/lab-16.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/11/lab-15.html'>Lab 15</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-11-03" pubdate="true">2022-11-03</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-15---globbing-and-list-comprehensions--dictionary-comprehensions--filtered-list-comprehensions--using-format">Lab 15 - Globbing and List comprehensions / Dictionary Comprehensions / Filtered List Comprehensions / Using format</h1>
+
+<p>In Lab 15, I learned about Globbing and list comprehensions, a list comprehension provides a compact way of mapping a list into another list by applying a function to each the elements of the list. List comprehensions are really closer to a convenient syntax for map, which I used in Racket. I practiced list comprehensions and globbing using the practice program that was given in the lab which is called 
+ <i>globex.py</i>. Also, I practiced a concept called 
+ <i>globbing</i>. The use of globbing is that it returns all the file paths that matches a specific patten. In addition, I got to practice 
+ <i>lambda</i> functions in the same program which is pretty much similar to the racket lambda function. Another concept that I learned in the lab was 
+ <i>Dictionary Comprehensions</i>. A dictionary comprehension is like a list comprehension, but it construct a dictionary instead of a list. Dictionaries are powerful built in data structures i Python that stores data as key-value pairs. Also, I learned about filtered list comprehensions using a program I wrote in Assignment 1 using Racket which is called 
+ <i>drop_divisible</i> where the program drops values that can be divided by 3 except for 3. A list comprehension provides a compact way of mapping a list into another list by applying a function to each element of the elements of the list without the use of if clause. I practiced the concept with a completing a program that was given in the lab and the program is as follows,</p>
+
+<pre>
+from math import sqrt,ceil
+
+def drop_divisible(n,lst):
+    return [ j for j in lst if j==n or j % n != 0]
+
+def sieve_with(candidates, lst):
+    for c in candidates:
+        lst=drop_divisible(c,lst)
+    return lst
+
+def sieve(n):
+    return sieve_with(range(2,ceil(sqrt(n))+1), range(2,n))</pre>
+
+<p>Dictionaries and globbing were new to me since I have not used those concepts. However, I am familiar with lists and using format because I have hands-on experience because I learned them in racket. Also, lambda function is familiar to me because I have learned that before.</p>
+
+<p>I practice few skills in this lab such as writing lists and using format. Also, I learned how to use dictionaries and globbing.</p>
+
+<p>I have not heard about the concept of globbing and I heard it for the first time. It is interesting to know that there is concept like that where you can get all the path of file that match a certain pattern.</p>
+
+<p>In the lab, a very good resouce was given to read to learn more about python concepts called <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin">DiP3</a> which is very useful and informative. Also, some extra resources were about <a href="https://docs.python.org/3/reference/expressions.html#lambda">lambda functions</a>, <a href="https://docs.python.org/3/library/functions.html#map">map function</a>, and <a href="https://docs.python.org/3/library/stdtypes.html#typesseq-range">range function</a> in Python.</p>
+
+<p><code>Number Of Words: 470</code> <code>Average Reading Time: 4-5 minutes</code></p>
+  <footer>
+    <a href='/2022/11/lab-15.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/10/lab-14.html'>Lab 14</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-31" pubdate="true">2022-10-31</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-14---pytest--modules--testing-docstring--indentation--exception">Lab 14 - Pytest / Modules / Testing, docstring / Indentation / Exception</h1>
+
+<p>In Lab 14, I started learning 
+ <i>Python</i>. I started practicing Python with a program called 
+ <i>humansize.py</i> that converts file sizes to human-readable form. I can run Python programs with 
+ <i>$ python program.py</i> command. Also, I learned how to use the debugger and I practiced debugging using the 
+ <i>humansize.py</i> program. I can start the debugger with 
+ <i>$ pudb3 program.py</i>. In addition, I learned how to write unit test cases in Python. A sample test file was given in the lab where the file extention is 
+ <i>.py</i>. I can run the tests using 
+ <i>$ pytest-3 file_name.py</i>. Also, the 
+ <i>pytest</i> should be imported in the test file and the function that you need to test. The test coverage can be obtained by running 
+ <i>$ pytest-3 --cov=mymodule --cov-report=term-missing</i> command. Furthermore, I learned about modules using a practice program called 
+ <i>client.py</i> and I had to import the 
+ <i>humansize</i> module into the file inorder to use the module. A amazing observation is that if__name__=='__main__' does not run when imported into client.py. In addition, I learned about identation which is an important thing in Python because Python use identation to define blocks. A practice exercise was given in the lab to practice identation. Also, I learned about exception which is another importan concept in Python. A program was given in the lab to add try and catch block to practice exception and the completed program is as follows,</p>
+
+<pre>
+import math
+
+def fraction(a,b):
+	try:
+		return a/b
+	except ZeroDivisionError:
+		return math.nan</pre>
+
+<p>I'm familiar with most of the concepts since I learned Racket and JavaScript. I have some experience with Python because I have written some small programs in Python inorder to practice Python few years ago. However, Modules and writing unit test cases were new concepts for me. Exception was not a new concept for me since I have written many exception in Java.</p>
+
+<p>There are few new skills that I practiced in this lab such as writing unit test cases, writing exception, and writing modules.</p>
+
+<p>It was interesting to know that when a module is imported why the main block is not running. I do not have a good idea about that, but I will do my research to find out why it and how it is happening.</p>
+
+<p>In the lab, a very good resouce was given to read to learn more about python concepts called <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin">DiP3</a> which is very useful and informative.</p>
+
+<p><code>Number Of Words: 460</code> <code>Average Reading Time: 4-5 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-14.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/10/lab-13.html'>Lab 13</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-27" pubdate="true">2022-10-27</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-13---timers--timers-part-ii">Lab 13 - Timers / Timers Part II</h1>
+
+<p>In Lab 13, I learned about JavaScript timers. I used sample programs given in the lab where the program outputs an animation according to a given time interval using recursion. This programming is called 
+ <i>asynchronous programming</i> in JavaScript. Something was not right with the program I used for the first example because even if I move the 
+ <i>console.log</i> outside the loop, the output is still the same, but I later figured out that it is because of the delay between iterations and unlike other programming languages JavaScript does not have a 
+ <i>sleep</i> builtin to pause the current thread. As a workaround, JavaScript has an option called 
+ <i>timers</i>. The program I used to practice is as follows,</p>
+
+<pre>
+function loop(i,str) {
+    if (i&gt;0) {
+        console.log("\033c");
+        console.log(str);
+        setTimeout(function() { loop(i-1, str+"*"); }, 1000);
+    }
+}
+
+loop(20,"*");
+
+console.log("all done!");</pre>
+
+<p>In the first part of the lab, I used recursion, but in the second part of the lab, I used timers using 
+ <i>setInterval</i>, but I had explicitly cancel the timer with 
+ <i>clearInterval</i> timer, if not it will run forever.</p>
+
+<p>I was familiar with timers since I have used timers in one of my JavaScript project I did few years ago, adn it was easy for me to understand the concept.</p>
+
+<p>It was intersting that amazing animations can be created with a simple concept like timers.</p>
+
+<p>In the lab, there were not many resources given for this specific concept, but I read all the documents that was given in the lab.</p>
+
+<p><code>Number Of Words: 405</code> <code>Average Reading Time: 3-4 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-13.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/10/lab-12.html'>Lab 12</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-25" pubdate="true">2022-10-25</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-12---completing-test-coverage-for-village-state--testing-random-robot-1--2--robot-with-a-route">Lab 12 - Completing Test Coverage for Village State / Testing Random Robot 1 &amp; 2 / Robot with a Route</h1>
+
+<p>In Lab 12, I finished the practice example I did in Lab 11 about the mail delivery robot. The delivery robot represents a graph data structure. The graph is about the village of Meadowfield which is not very big and the robot delivery mails to 11 different places via 14 roads. The places are as follows,</p>
+
+<pre>
+const roads = [
+  "Alice's House-Bob's House",   "Alice's House-Cabin",
+  "Alice's House-Post Office",   "Bob's House-Town Hall",
+  "Daria's House-Ernie's House", "Daria's House-Town Hall",
+  "Ernie's House-Grete's House", "Grete's House-Farm",
+  "Grete's House-Shop",          "Marketplace-Farm",
+  "Marketplace-Post Office",     "Marketplace-Shop",
+  "Marketplace-Town Hall",       "Shop-Town Hall"
+];</pre>
+
+<p>In this lab, I completed the test coverage for the funtions that I wrote in the previous lab. I used "
+ <i>nyc jasmine</i>" to check the test coverage. Also, I added a new test case to move the robot to an invalid destination and adds a parcel that is not carried by the robot. Also, I did white box testing and black box testing for this program. Moreover, I did unit testing for the robot number 1, I created in the previous lab using a function called 
+ <i>runRobot</i>. Furthermore, I tested the robot number 2 I created in the previous lab using a functions called 
+ <i>randomPick and randomRobot</i> by sending random robots to random locations. Also, one annoying thing about sending random robots to random locations is that we get different outputs each time. After, adding all the test cases, I was able to complete 100% test coverage. In addition, my testing did not distinguish two robots and because of that I had to stop using jasmine and use a function called 
+ <i>compareRobot</i> to compare and test two robots. 
+ <i>Racket lists are similar to this type of recursion when I compare this concept with racket.</i></p>
+
+<p>As I mentioned, in the previous lab, the graph data structure is new to me and since I'm familiar with java objects and class files it was easy for me to understand some of the concepts that we discussed in the lab. However, reading the resources given in the lab exercise helped me a lot to understand about the concepts discussed in this lab.</p>
+
+<p>The random robot function was quite interesting to me specially, the graphical representation of the robots movement was amazing. It was hard for me to understanding how JavaScript is working with the graph data structure, but after doing some practice I was able to understand most of the concepts.</p>
+
+<p>In the lab, there were some resources given to read and understand some concepts by my self. In the begining it was difficult for me to understand, but after the instructor explained the concepts, I was able to understand.</p>
+
+<p><code>Number Of Words: 460,</code> <code>Average Reading Time: 4-5 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-12.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/10/lab-11.html'>Lab 11</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-20" pubdate="true">2022-10-20</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-11---deep-comparison--variadic-functions--representing-a-graph">Lab 11 - Deep Comparison / Variadic Functions / Representing a graph</h1>
+
+<p>In Lab 11, I learned about JavaScript deep comparison. In fact, deep comparison is used to determine whether objects are equal by comparing each property in the operands. Racket has a built in function to do the work, but JavaScript does not have the function unfortunately <a href="https://www.syncfusion.com/blogs/post/5-different-ways-to-deep-compare-javascript-objects.aspx#:~:text=Two%20types%20of%20equalities%20in%20JavaScript&amp;text=Referential%20equality%3A%20Determines%20whether%20the,each%20property%20in%20the%20operands." title="Deep Comparison">Deep Comparison</a>. Also, I learned about JavaScript variadic functions. Variadic function is a function where the total number of parameters are unknown and can be adjusted at the time the method is called. Other programming languages like C also have this interesting feature. Moreover, I learned about graph data structure using an interesting example where I have to create a robot postman travel from one node to the other using graph data structure. I also wrote some test suites using jasmine to test how the graph works.</p>
+
+<p>Memory property is emphasized of the VillageState in the particular section oif the book. For instance, the current place and the next place can be easily called because of this feature. "<code>hash-set</code>" and "<code>hash-update</code>" reminds me of this feature where the memory gets updated.</p>
+
+<p>Graph data structure was familiar to me because I have learned graph data structure in different course, but I did not have any experiences implenting a graph and I was able to practice to write a graph. Also, deep comparison was a new concept for me since I have not learned that concept in any other courses.</p>
+
+<p>The practice example of the delivery robot was interesting to me and it was a great example to learn and understand the graph data structure properly.</p>
+
+<p>I was given to read some references regarding JavaScript to understand about the concepts and it was very helpful and it helped me understand the concepts pretty well.</p>
+
+<p><code>Number Of Words: 455,</code> <code>Average Reading Time: 4-5 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-11.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<footer>
+ <ul class="pagination">
+  <li class="page-item disabled"><a class="page-link" href="#">
+    <quote>&larr;</quote></a></li>
+  <li class="page-item active"><a class="page-link" href="/tags/PUBLISHED.html">1</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/PUBLISHED-2.html">2</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/PUBLISHED-3.html">3</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/PUBLISHED-2.html">
+    <quote>&rarr;</quote></a></li></ul></footer>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+        <p>Using <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>.</p>
+        <p><em>Your legal notice here</em>.</p>
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

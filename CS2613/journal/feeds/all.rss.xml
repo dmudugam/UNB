@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>My Blog: My Blog</title>
+  <description>My Blog: My Blog</description>
+  <link>http://www.example.com/index.html</link>
+  <lastBuildDate>Tue, 29 Nov 2022 07:15:14 UT</lastBuildDate>
+  <pubDate>Tue, 29 Nov 2022 07:15:14 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Lab 20</title>
+   <link>http://www.example.com/2022/11/lab-20.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-11-lab-20-html</guid>
+   <pubDate>Tue, 29 Nov 2022 07:15:14 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-20---using-arrayfun--fully-vectorizing--cell-arrays--variable-length-argument-lists"&gt;Lab 20 - Using Arrayfun / Fully vectorizing / Cell Arrays / Variable-length argument lists&lt;/h1&gt;
+
+&lt;p&gt;In Lab 20, I learned about using arrayfun and I used the practice example from the previous lab. I measure the execution time in loops and matrix execution times. I observed that the computation time for matrix is lower than the loop version and when the size is double the time does not doubled. Also, I learned about fully vectorizing using examples given in the lab. Vectorization is the process of converting an algorithm from operating on a single value at a time to operating on a set of values at one time. I tried to improve the execution time of arraydelta using vectorization and I could notice that it is very sensitive to the size of the range. In addition, I learned about cell arrays which means a data type with indexed data containers called cells, where each cell can contain any type of data. Also, the timeit function used in the lab 20 only works for single argument functions, octave provides a special input argument 
+ &lt;i&gt;varargin&lt;/i&gt;, which collects all remaining arguments into a cell array, proving similar funcionality to the 
+ &lt;i&gt;.rest&lt;/i&gt; argument in racket, or the 
+ &lt;i&gt;...rest&lt;/i&gt; argument in JavaScript. I completed the given practice example in the lab to learn this concept which shown below,&lt;/p&gt;
+
+&lt;pre&gt;
+function timeit(reps, func, varargin)
+    times = zeros(reps, 1);
+
+    for i=1:reps
+      tic(); func(varargin{:}); times(i) = toc();
+    end
+
+    times = sort(times);
+    fprintf ('%s\tmedian=%.3fms median=%.3fms total=%.3fms\n',func2str(func), median(times)*1000,
+             mean(times)*1000, sum(times)*1000);
+endfunction
+
+%!test "nullary function"
+%! timeit(10000,@rand)
+
+%!test "unary function"
+%! timeit(10000,@rand,1)
+
+%!test "Binary function"
+%! timeit(10000,@plus,1,2)
+
+%!test "Ternery function"
+%! timeit(10000,@plus,1,2,3)&lt;/pre&gt;
+
+&lt;p&gt;Cell arrays is a new concept for me and I have not worked with cell arrays before. Cell arrays was hard, but after following the given reference material it was easy to understand the concept.&lt;/p&gt;
+
+&lt;p&gt;I practiced writing vectorization functions which is interesting.&lt;/p&gt;
+
+&lt;p&gt;I had hard time understanding cell arrays at first, but after reading the materials I was able to understand and it was interesting to me.&lt;/p&gt;
+
+&lt;p&gt;In the lab, a reference was given to learn more about &lt;a href="https://docs.octave.org/v4.0.3/Test-Functions.html"&gt;varagin&lt;/a&gt; which is very informative and I was able to understand the concept clearly with the material.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 380&lt;/code&gt; &lt;code&gt;Average Reading Time: 2-3 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/11/lab-20.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 19</title>
+   <link>http://www.example.com/2022/11/lab-19.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-11-lab-19-html</guid>
+   <pubDate>Thu, 24 Nov 2022 22:04:00 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-19---working-with-grids--defining-and-testing-a-function--making-3d-plots"&gt;Lab 19 - Working With Grids / Defining and testing a function / Making 3D plots&lt;/h1&gt;
+
+&lt;p&gt;In Lab 19, I learned how to work with grids and Octave has a notation for arrays that we can use to initialize arrays 
+ &lt;i&gt;r = [-1:0.5:1]&lt;/i&gt;. Also, there is a built in function called &lt;a href="https://www.gnu.org/software/octave/doc/v4.2.1/Three_002dDimensional-Plots.html#XREFmeshgrid"&gt;meshgrid&lt;/a&gt; where it gives cartesian products of two arrays. Moreover, we can plot the surface with 
+ &lt;i&gt;surf()&lt;/i&gt; However, the more points we will use the surface will be smoother. In addition, I learned to define a test and a testing function where I practiced that using a math equation which is 
+ &lt;i&gt;δ(β, a, b) = βa·b - (β-1)b·b&lt;/i&gt;. I used the following program to define a the test cases.&lt;/p&gt;
+
+&lt;pre&gt;
+## compute βa·b - (β-1)b·b
+## a, b are assumed to be column vectors, beta is a scalar
+    
+function ret = delta(beta, a, b)
+  ret = beta*dot(a,b) - (beta-1)*dot(b,b)
+endfunction
+
+
+%% delta(0,a,b) = |b|²
+%!test
+%! a = rand(2,1);
+%!b = rand(2,1);
+%!assert(delta(0,a,b),norm(b)^2,eps);
+
+%% delta(1,a,b) = a.b
+%!test
+%!a=rand(2,1);
+%!b=rand(2,1);
+%!assert(delta(1,a,b), dot(a,b), eps);
+
+%% delta(2,a,b) = 2a.b - |b|²
+%!test
+%!a =rand(2,1);
+%!b=rand(2,1);
+%!assert(delta(2,a,b), 2*dot(a,b)-norm(b)^2,eps);&lt;/pre&gt;
+
+&lt;p&gt;Plotting surfaces is quite new to me and I and working with grids as well because I have never worked with grids before in any other language.&lt;/p&gt;
+
+&lt;p&gt;I practiced defining test cases and plotting 3D plots and creating surfaces as well.&lt;/p&gt;
+
+&lt;p&gt;The plotting 3D plots is very interesting because it graphically very nice to see and we are able to rotate the graph and identify all the point which is easier if we are doing linear algebra.&lt;/p&gt;
+
+&lt;p&gt;In the lab, a reference was given to learn more about Octave unit testing. &lt;a href="https://docs.octave.org/v4.0.3/Test-Functions.html"&gt;Octave unit testing&lt;/a&gt;. Also, another reference was given to learn about octave anonymous functions. &lt;a href="https://docs.octave.org/v4.2.0/Anonymous-Functions.html"&gt;octave anonymous functions&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 390&lt;/code&gt; &lt;code&gt;Average Reading Time: 2-3 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/11/lab-19.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 18</title>
+   <link>http://www.example.com/2022/11/lab-18.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-11-lab-18-html</guid>
+   <pubDate>Tue, 22 Nov 2022 19:47:02 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-18---counter-generator-and-classes--running-octave--fibonaccci-as-matrix-multiplication--performance-comparison"&gt;Lab 18 - Counter, Generator, and Classes / Running Octave / Fibonaccci as matrix multiplication / Performance Comparison&lt;/h1&gt;
+
+&lt;p&gt;In Lab 18, I learned about Python counter, generators, and classes. I used examples from Lab 17 to practice some of these concepts. However, in this lab I used a compatible interface by implementing a python class. I could observe that the implimentation is closer to the closure based version of Lab 17 than the original generator version. Also, I used the Fibonacci example from Lab 17 and improved it to use with the generator from the Lab 18. Also, I started learning a new language which is called Octave. Ocatve has a GUI unlike other languages where you can start the GUI by running the command 
+ &lt;i&gt;ocatve --gui&lt;/i&gt; or can access the REPL by running the command octave in the command prompt. My first program with octave was Fibonacci where I practiced running octave programs. Moreover, I wrote some unit test cases and also I learned about Fibonacci as matrix multiplication. I also did some perforamce comparison and I found that loops are generally slower than matrix operations which can be done in a single call to an optimized library. This is strategy is generally called vectorization and applies in variety of languages. I used the following program to do the comparison,&lt;/p&gt;
+
+&lt;pre&gt;
+# Based on an example from the Julia microbenchmark suite.
+
+function timeit(func, argument, reps)
+    times = zeros(reps, 1);
+
+    for i=1:reps
+      tic(); func(argument); times(i) = toc();
+    end
+
+    times = sort(times);
+    fprintf ('%s\tmedian=%.3fms mean=%.3fms total=%.3fms\n',func2str(func), median(times)*1000,
+             mean(times)*1000, sum(times)*1000);
+endfunction&lt;/pre&gt;
+
+&lt;p&gt;Octave is a new language for me, but I have heard about octave before. I have used MATLAB before and I find octave is similar to MATLAB except for some features.&lt;/p&gt;
+
+&lt;p&gt;I practiced writing python classes with counter and generators which was interesting. Moreover, I practiced writing Fibonacci numbers in python and octave as well.&lt;/p&gt;
+
+&lt;p&gt;The vectorization stratergy is amazing where using matrix operations is faster than using loops.&lt;/p&gt;
+
+&lt;p&gt;In the lab, a reference was given to learn more about octave where I could find all the documentation for octave and it is very easy to understand as well. &lt;a href="https://www.gnu.org/software/octave/doc/interpreter/Timing-Utilities.html"&gt;Octave&lt;/a&gt;. Also, another reference was given to learn about octave function handles where I could read about function handles. &lt;a href="https://docs.octave.org/interpreter/Function-Handles.html#Function-Handles"&gt;Function Handles&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 410&lt;/code&gt; &lt;code&gt;Average Reading Time: 3-4 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/11/lab-18.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 17</title>
+   <link>http://www.example.com/2022/11/lab-17.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-11-lab-17-html</guid>
+   <pubDate>Thu, 17 Nov 2022 18:39:12 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-17---generators--fibonacci--sieve--performance-comparison"&gt;Lab 17 - Generators / Fibonacci / Sieve / Performance Comparison&lt;/h1&gt;
+
+&lt;p&gt;In Lab 17, I learned about generators in python and the first generator example from the book is the 
+ &lt;i&gt;make_counter(x)&lt;/i&gt;. After, I run the program I was able to see a delay and I used the 
+ &lt;i&gt;pudb3&lt;/i&gt; debugger to trace the code and I could see that 
+ &lt;i&gt;next&lt;/i&gt; and 
+ &lt;i&gt;yield&lt;/i&gt; jump back and forth between two sequences of execution. Also, I learned about Fibonacci number program by the second generator example given in the book which is 
+ &lt;i&gt;fib(max)&lt;/i&gt;. In addition, I used the Sieve practice problem to practice python generators. Also, I did performance comparison using the practice problem that was given in the lab and the most common tradeoffs in computing is time versus memory. There is a technique calle memoization uses more memory to cache answers. There is a opposite tradeoff, using more time for less memory. I used the following practice problem to compare the benefits,&lt;/p&gt;
+
+&lt;pre&gt;
+import sieve
+import sievegen
+import timeit
+
+print('sieve={:s}'.format(str(sieve.sieve(10))))
+print('sievegen={:s}'.format(str(sievegen.sieve(10))))
+
+print(timeit.timeit("sieve.sieve(10000)","import sieve",number=100))
+print(timeit.timeit("sievegen.sieve(10000)", "import sievegen",number=100))
+print(timeit.timeit("[x for x in sievegen.sieve(10000)]", "import sievegen",number=100))&lt;/pre&gt;
+
+&lt;p&gt;Memoization was a new concept for me since I have not learned that concept and it is interesting that how you can make your code efficient and faster with these kind of techniques.&lt;/p&gt;
+
+&lt;p&gt;I practiced writing generators with the problems given to me in the lab such as 
+ &lt;i&gt;fib(max)&lt;/i&gt; and 
+ &lt;i&gt;make_counter(x)&lt;/i&gt;.&lt;/p&gt;
+
+&lt;p&gt;It is interesting how the techniques like memoization helps to improve the execution speed of the code and there is always a tradeoff.&lt;/p&gt;
+
+&lt;p&gt;In the lab, a very good resouce was given to read to learn more about python concepts called &lt;a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin"&gt;DiP3&lt;/a&gt; which is very useful and informative. Also, a &lt;a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/generators.html"&gt;Closures &amp;amp; Generators&lt;/a&gt; reference was given in the lab to read and get familiarized with the topic.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 402&lt;/code&gt; &lt;code&gt;Average Reading Time: 2-3 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/11/lab-17.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 16</title>
+   <link>http://www.example.com/2022/11/lab-16.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-11-lab-16-html</guid>
+   <pubDate>Tue, 15 Nov 2022 19:07:38 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-16---regular-expressions--stripping-quotes--handling-quoted-commas--parsing-more-columns"&gt;Lab 16 - Regular Expressions / Stripping Quotes / Handling Quoted Commas / Parsing more Columns&lt;/h1&gt;
+
+&lt;p&gt;In Lab 16, I learned about Regular Expressions in Python, regular expressions are a domain specific language that allow is to specify complicated string operations. 
+ &lt;i&gt;$&lt;/i&gt; is used to identify the end of the string and 
+ &lt;i&gt;^&lt;/i&gt; is used to identify the begining of the string. Also, I learned how to use 
+ &lt;i&gt;findall&lt;/i&gt; function. Also, I learned about stripping quotes. In general, entries of CSV files can have quotes, but these are not consider part of the content. Also, I learned how to handle quoted commas, I used practice problems given in the lab to learn this concept. In addition, I learned how to parse more columns using a practice problem that was given in the lab exercise, the completed program is as follows,&lt;/p&gt;
+
+&lt;pre&gt;
+def split_row(string):
+	col_regex = re.compile(r'("[^"]*"|[^,]+)')
+	return [strip_quotes(col) for col in col_regex.findall(string) ]&lt;/pre&gt;
+
+&lt;p&gt;Stripping quotes was a new concept for me since I have not used that in any language, but it was not hard and it can be easily understandable after going through the lab exercises.&lt;/p&gt;
+
+&lt;p&gt;I practiced writing regular expressions with this lab.&lt;/p&gt;
+
+&lt;p&gt;It is interesting how multiple columns are parsed and it has to be handled seperately.&lt;/p&gt;
+
+&lt;p&gt;In the lab, a very good resouce was given to read to learn more about python concepts called &lt;a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin"&gt;DiP3&lt;/a&gt; which is very useful and informative. Also, a &lt;a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/regular-expressions.html#streetaddresses"&gt;Case Study&lt;/a&gt; was given in the lab to read and get familiarized with the topic.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 390&lt;/code&gt; &lt;code&gt;Average Reading Time: 3-4 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/11/lab-16.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 15</title>
+   <link>http://www.example.com/2022/11/lab-15.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-11-lab-15-html</guid>
+   <pubDate>Thu, 03 Nov 2022 15:21:27 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-15---globbing-and-list-comprehensions--dictionary-comprehensions--filtered-list-comprehensions--using-format"&gt;Lab 15 - Globbing and List comprehensions / Dictionary Comprehensions / Filtered List Comprehensions / Using format&lt;/h1&gt;
+
+&lt;p&gt;In Lab 15, I learned about Globbing and list comprehensions, a list comprehension provides a compact way of mapping a list into another list by applying a function to each the elements of the list. List comprehensions are really closer to a convenient syntax for map, which I used in Racket. I practiced list comprehensions and globbing using the practice program that was given in the lab which is called 
+ &lt;i&gt;globex.py&lt;/i&gt;. Also, I practiced a concept called 
+ &lt;i&gt;globbing&lt;/i&gt;. The use of globbing is that it returns all the file paths that matches a specific patten. In addition, I got to practice 
+ &lt;i&gt;lambda&lt;/i&gt; functions in the same program which is pretty much similar to the racket lambda function. Another concept that I learned in the lab was 
+ &lt;i&gt;Dictionary Comprehensions&lt;/i&gt;. A dictionary comprehension is like a list comprehension, but it construct a dictionary instead of a list. Dictionaries are powerful built in data structures i Python that stores data as key-value pairs. Also, I learned about filtered list comprehensions using a program I wrote in Assignment 1 using Racket which is called 
+ &lt;i&gt;drop_divisible&lt;/i&gt; where the program drops values that can be divided by 3 except for 3. A list comprehension provides a compact way of mapping a list into another list by applying a function to each element of the elements of the list without the use of if clause. I practiced the concept with a completing a program that was given in the lab and the program is as follows,&lt;/p&gt;
+
+&lt;pre&gt;
+from math import sqrt,ceil
+
+def drop_divisible(n,lst):
+    return [ j for j in lst if j==n or j % n != 0]
+
+def sieve_with(candidates, lst):
+    for c in candidates:
+        lst=drop_divisible(c,lst)
+    return lst
+
+def sieve(n):
+    return sieve_with(range(2,ceil(sqrt(n))+1), range(2,n))&lt;/pre&gt;
+
+&lt;p&gt;Dictionaries and globbing were new to me since I have not used those concepts. However, I am familiar with lists and using format because I have hands-on experience because I learned them in racket. Also, lambda function is familiar to me because I have learned that before.&lt;/p&gt;
+
+&lt;p&gt;I practice few skills in this lab such as writing lists and using format. Also, I learned how to use dictionaries and globbing.&lt;/p&gt;
+
+&lt;p&gt;I have not heard about the concept of globbing and I heard it for the first time. It is interesting to know that there is concept like that where you can get all the path of file that match a certain pattern.&lt;/p&gt;
+
+&lt;p&gt;In the lab, a very good resouce was given to read to learn more about python concepts called &lt;a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin"&gt;DiP3&lt;/a&gt; which is very useful and informative. Also, some extra resources were about &lt;a href="https://docs.python.org/3/reference/expressions.html#lambda"&gt;lambda functions&lt;/a&gt;, &lt;a href="https://docs.python.org/3/library/functions.html#map"&gt;map function&lt;/a&gt;, and &lt;a href="https://docs.python.org/3/library/stdtypes.html#typesseq-range"&gt;range function&lt;/a&gt; in Python.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 470&lt;/code&gt; &lt;code&gt;Average Reading Time: 4-5 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/11/lab-15.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 14</title>
+   <link>http://www.example.com/2022/10/lab-14.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-14-html</guid>
+   <pubDate>Mon, 31 Oct 2022 23:32:08 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-14---pytest--modules--testing-docstring--indentation--exception"&gt;Lab 14 - Pytest / Modules / Testing, docstring / Indentation / Exception&lt;/h1&gt;
+
+&lt;p&gt;In Lab 14, I started learning 
+ &lt;i&gt;Python&lt;/i&gt;. I started practicing Python with a program called 
+ &lt;i&gt;humansize.py&lt;/i&gt; that converts file sizes to human-readable form. I can run Python programs with 
+ &lt;i&gt;$ python program.py&lt;/i&gt; command. Also, I learned how to use the debugger and I practiced debugging using the 
+ &lt;i&gt;humansize.py&lt;/i&gt; program. I can start the debugger with 
+ &lt;i&gt;$ pudb3 program.py&lt;/i&gt;. In addition, I learned how to write unit test cases in Python. A sample test file was given in the lab where the file extention is 
+ &lt;i&gt;.py&lt;/i&gt;. I can run the tests using 
+ &lt;i&gt;$ pytest-3 file_name.py&lt;/i&gt;. Also, the 
+ &lt;i&gt;pytest&lt;/i&gt; should be imported in the test file and the function that you need to test. The test coverage can be obtained by running 
+ &lt;i&gt;$ pytest-3 --cov=mymodule --cov-report=term-missing&lt;/i&gt; command. Furthermore, I learned about modules using a practice program called 
+ &lt;i&gt;client.py&lt;/i&gt; and I had to import the 
+ &lt;i&gt;humansize&lt;/i&gt; module into the file inorder to use the module. A amazing observation is that if__name__=='__main__' does not run when imported into client.py. In addition, I learned about identation which is an important thing in Python because Python use identation to define blocks. A practice exercise was given in the lab to practice identation. Also, I learned about exception which is another importan concept in Python. A program was given in the lab to add try and catch block to practice exception and the completed program is as follows,&lt;/p&gt;
+
+&lt;pre&gt;
+import math
+
+def fraction(a,b):
+	try:
+		return a/b
+	except ZeroDivisionError:
+		return math.nan&lt;/pre&gt;
+
+&lt;p&gt;I'm familiar with most of the concepts since I learned Racket and JavaScript. I have some experience with Python because I have written some small programs in Python inorder to practice Python few years ago. However, Modules and writing unit test cases were new concepts for me. Exception was not a new concept for me since I have written many exception in Java.&lt;/p&gt;
+
+&lt;p&gt;There are few new skills that I practiced in this lab such as writing unit test cases, writing exception, and writing modules.&lt;/p&gt;
+
+&lt;p&gt;It was interesting to know that when a module is imported why the main block is not running. I do not have a good idea about that, but I will do my research to find out why it and how it is happening.&lt;/p&gt;
+
+&lt;p&gt;In the lab, a very good resouce was given to read to learn more about python concepts called &lt;a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin"&gt;DiP3&lt;/a&gt; which is very useful and informative.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 460&lt;/code&gt; &lt;code&gt;Average Reading Time: 4-5 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-14.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 13</title>
+   <link>http://www.example.com/2022/10/lab-13.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-13-html</guid>
+   <pubDate>Thu, 27 Oct 2022 18:28:20 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-13---timers--timers-part-ii"&gt;Lab 13 - Timers / Timers Part II&lt;/h1&gt;
+
+&lt;p&gt;In Lab 13, I learned about JavaScript timers. I used sample programs given in the lab where the program outputs an animation according to a given time interval using recursion. This programming is called 
+ &lt;i&gt;asynchronous programming&lt;/i&gt; in JavaScript. Something was not right with the program I used for the first example because even if I move the 
+ &lt;i&gt;console.log&lt;/i&gt; outside the loop, the output is still the same, but I later figured out that it is because of the delay between iterations and unlike other programming languages JavaScript does not have a 
+ &lt;i&gt;sleep&lt;/i&gt; builtin to pause the current thread. As a workaround, JavaScript has an option called 
+ &lt;i&gt;timers&lt;/i&gt;. The program I used to practice is as follows,&lt;/p&gt;
+
+&lt;pre&gt;
+function loop(i,str) {
+    if (i&amp;gt;0) {
+        console.log("\033c");
+        console.log(str);
+        setTimeout(function() { loop(i-1, str+"*"); }, 1000);
+    }
+}
+
+loop(20,"*");
+
+console.log("all done!");&lt;/pre&gt;
+
+&lt;p&gt;In the first part of the lab, I used recursion, but in the second part of the lab, I used timers using 
+ &lt;i&gt;setInterval&lt;/i&gt;, but I had explicitly cancel the timer with 
+ &lt;i&gt;clearInterval&lt;/i&gt; timer, if not it will run forever.&lt;/p&gt;
+
+&lt;p&gt;I was familiar with timers since I have used timers in one of my JavaScript project I did few years ago, adn it was easy for me to understand the concept.&lt;/p&gt;
+
+&lt;p&gt;It was intersting that amazing animations can be created with a simple concept like timers.&lt;/p&gt;
+
+&lt;p&gt;In the lab, there were not many resources given for this specific concept, but I read all the documents that was given in the lab.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 405&lt;/code&gt; &lt;code&gt;Average Reading Time: 3-4 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-13.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 12</title>
+   <link>http://www.example.com/2022/10/lab-12.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-12-html</guid>
+   <pubDate>Tue, 25 Oct 2022 16:39:41 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-12---completing-test-coverage-for-village-state--testing-random-robot-1--2--robot-with-a-route"&gt;Lab 12 - Completing Test Coverage for Village State / Testing Random Robot 1 &amp;amp; 2 / Robot with a Route&lt;/h1&gt;
+
+&lt;p&gt;In Lab 12, I finished the practice example I did in Lab 11 about the mail delivery robot. The delivery robot represents a graph data structure. The graph is about the village of Meadowfield which is not very big and the robot delivery mails to 11 different places via 14 roads. The places are as follows,&lt;/p&gt;
+
+&lt;pre&gt;
+const roads = [
+  "Alice's House-Bob's House",   "Alice's House-Cabin",
+  "Alice's House-Post Office",   "Bob's House-Town Hall",
+  "Daria's House-Ernie's House", "Daria's House-Town Hall",
+  "Ernie's House-Grete's House", "Grete's House-Farm",
+  "Grete's House-Shop",          "Marketplace-Farm",
+  "Marketplace-Post Office",     "Marketplace-Shop",
+  "Marketplace-Town Hall",       "Shop-Town Hall"
+];&lt;/pre&gt;
+
+&lt;p&gt;In this lab, I completed the test coverage for the funtions that I wrote in the previous lab. I used "
+ &lt;i&gt;nyc jasmine&lt;/i&gt;" to check the test coverage. Also, I added a new test case to move the robot to an invalid destination and adds a parcel that is not carried by the robot. Also, I did white box testing and black box testing for this program. Moreover, I did unit testing for the robot number 1, I created in the previous lab using a function called 
+ &lt;i&gt;runRobot&lt;/i&gt;. Furthermore, I tested the robot number 2 I created in the previous lab using a functions called 
+ &lt;i&gt;randomPick and randomRobot&lt;/i&gt; by sending random robots to random locations. Also, one annoying thing about sending random robots to random locations is that we get different outputs each time. After, adding all the test cases, I was able to complete 100% test coverage. In addition, my testing did not distinguish two robots and because of that I had to stop using jasmine and use a function called 
+ &lt;i&gt;compareRobot&lt;/i&gt; to compare and test two robots. 
+ &lt;i&gt;Racket lists are similar to this type of recursion when I compare this concept with racket.&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;As I mentioned, in the previous lab, the graph data structure is new to me and since I'm familiar with java objects and class files it was easy for me to understand some of the concepts that we discussed in the lab. However, reading the resources given in the lab exercise helped me a lot to understand about the concepts discussed in this lab.&lt;/p&gt;
+
+&lt;p&gt;The random robot function was quite interesting to me specially, the graphical representation of the robots movement was amazing. It was hard for me to understanding how JavaScript is working with the graph data structure, but after doing some practice I was able to understand most of the concepts.&lt;/p&gt;
+
+&lt;p&gt;In the lab, there were some resources given to read and understand some concepts by my self. In the begining it was difficult for me to understand, but after the instructor explained the concepts, I was able to understand.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 460,&lt;/code&gt; &lt;code&gt;Average Reading Time: 4-5 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-12.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 11</title>
+   <link>http://www.example.com/2022/10/lab-11.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-11-html</guid>
+   <pubDate>Thu, 20 Oct 2022 14:34:00 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-11---deep-comparison--variadic-functions--representing-a-graph"&gt;Lab 11 - Deep Comparison / Variadic Functions / Representing a graph&lt;/h1&gt;
+
+&lt;p&gt;In Lab 11, I learned about JavaScript deep comparison. In fact, deep comparison is used to determine whether objects are equal by comparing each property in the operands. Racket has a built in function to do the work, but JavaScript does not have the function unfortunately &lt;a href="https://www.syncfusion.com/blogs/post/5-different-ways-to-deep-compare-javascript-objects.aspx#:~:text=Two%20types%20of%20equalities%20in%20JavaScript&amp;amp;text=Referential%20equality%3A%20Determines%20whether%20the,each%20property%20in%20the%20operands." title="Deep Comparison"&gt;Deep Comparison&lt;/a&gt;. Also, I learned about JavaScript variadic functions. Variadic function is a function where the total number of parameters are unknown and can be adjusted at the time the method is called. Other programming languages like C also have this interesting feature. Moreover, I learned about graph data structure using an interesting example where I have to create a robot postman travel from one node to the other using graph data structure. I also wrote some test suites using jasmine to test how the graph works.&lt;/p&gt;
+
+&lt;p&gt;Memory property is emphasized of the VillageState in the particular section oif the book. For instance, the current place and the next place can be easily called because of this feature. "&lt;code&gt;hash-set&lt;/code&gt;" and "&lt;code&gt;hash-update&lt;/code&gt;" reminds me of this feature where the memory gets updated.&lt;/p&gt;
+
+&lt;p&gt;Graph data structure was familiar to me because I have learned graph data structure in different course, but I did not have any experiences implenting a graph and I was able to practice to write a graph. Also, deep comparison was a new concept for me since I have not learned that concept in any other courses.&lt;/p&gt;
+
+&lt;p&gt;The practice example of the delivery robot was interesting to me and it was a great example to learn and understand the graph data structure properly.&lt;/p&gt;
+
+&lt;p&gt;I was given to read some references regarding JavaScript to understand about the concepts and it was very helpful and it helped me understand the concepts pretty well.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 455,&lt;/code&gt; &lt;code&gt;Average Reading Time: 4-5 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-11.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 10</title>
+   <link>http://www.example.com/2022/10/lab-10.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-10-html</guid>
+   <pubDate>Tue, 18 Oct 2022 02:53:11 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-10---methods--prototypes--classes--javascript-arrays--array-methods--recursion"&gt;Lab 10 - Methods / Prototypes / Classes / JavaScript Arrays / Array Methods / Recursion&lt;/h1&gt;
+
+&lt;p&gt;In Lab 10, I learned about JavaScript methods and objects. JavaScript methods are actions that can be performed on objects and a JavaScript method is a property containing a function defintion &lt;a href="https://www.w3schools.com/js/js_object_methods.asp" title="JavaScript Methods"&gt;JavaScript Methods&lt;/a&gt;. In JavaScript, "&lt;code&gt;this&lt;/code&gt;" keyword refers to an object. In JavaScript, when the function method is called as "&lt;code&gt;object.method()&lt;/code&gt;", the special variable "&lt;code&gt;this&lt;/code&gt;" is defined to mean the current object. Also, I learned about Prototypes. Prototypes are the mechanism by whic JavaScript objects inherits features from one another &lt;a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes" title="JavaScript Prototype"&gt;Prototype&lt;/a&gt;. I practiced this concept using an example method which inherited from the prototype, but the fields were not inherited. It is helpful because, it allows to easily define methods to all instances of a particular object. Moreover, I learned about JavaScript classes which is not very similar to Java classes. JavaScript version "&lt;code&gt;ES2015&lt;/code&gt;", now provides the "&lt;code&gt;class&lt;/code&gt;" keyword to concisely generate constructors and prototypes. In JavaScript, "&lt;code&gt;new&lt;/code&gt;" keyword is used along with the prototype property of a constructor. Below is the sample practice program I used in the lab to practice the concept,&lt;/p&gt;
+
+&lt;pre&gt;
+function Time(hours, mins){
+    this.hours=hours;
+    this.mins=mins;
+}
+
+Time.prototype.plus=function (other) {
+    let raw=timePlus(this,other);
+    return new Time(raw.hours, raw.mins);
+}
+
+G = new Time(20,59);
+H = new Time(11,11);
+
+I=G.plus(H);
+console.log(I);&lt;/pre&gt;
+
+&lt;p&gt;Also, I learned about the JavaScript arrays which are implemented as objects and because of that sometime their behaviour is surprising. I practiced the array concept using few practice problems given in the lab exercises. The first practice program I wrote was to calculate the sum if a range of an array whichi is easier. Furthermore, I learned about array methods. JavaScript has some higher order methods that can take functions as arguments. Also, JavaScript "
+ &lt;i&gt;reduce&lt;/i&gt;" function is similar to "
+ &lt;i&gt;foldl&lt;/i&gt;" in racket. "
+ &lt;i&gt;forEach&lt;/i&gt;" function is different from "
+ &lt;i&gt;map&lt;/i&gt;" function in racket because it does not produce a list, however, it helps to iterate through the list with giving out of bound errors. Also, I learned about recursion in JavaScript which is the same concept in racket and Java as well but the way of writing recursion methods is a lot similar to Java.&lt;/p&gt;
+
+&lt;p&gt;Arrays and Recursion concepts were familiar to me since I have worked with Java before, but prototypes was a new concept for me. However, it did not take much time to get familiar with prototypes because I learned a similar kind concept in racket.&lt;/p&gt;
+
+&lt;p&gt;I practiced writing recursive methods in JavaScript and I also practiced writing JavaScript classes even though I have written Java classes, Writing JavaScript classes is a bit different than writing Java classes.&lt;/p&gt;
+
+&lt;p&gt;The concept of prototypes surprised me because I did not know a concept like exist in JavaScript and it also helps to reduce the number of objects that need to be created which helps to write more efficent programs.&lt;/p&gt;
+
+&lt;p&gt;I was given to write some practice examples on my own and it was hard to write it at first because some of the concepts were new to me like prototypes, but I was able to do it after following the instructions.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 476,&lt;/code&gt; &lt;code&gt;Average Reading Time: 5-6 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-10.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 09</title>
+   <link>http://www.example.com/2022/10/lab-09.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-09-html</guid>
+   <pubDate>Thu, 13 Oct 2022 16:18:12 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-09---jasmin--test-modules--test-coverage--node-debugger--javascript-objects--json"&gt;Lab 09 - Jasmin / Test Modules / Test Coverage / Node Debugger / JavaScript Objects / JSON&lt;/h1&gt;
+
+&lt;p&gt;In Lab 09, I learned about Jasmine which is a behavior driven development framework for testing JavaScript code and it does not depend on any other JavaScript frameworks. I use "&lt;code&gt;jasmine init path&lt;/code&gt;" command to create jasmine configuration under "&lt;code&gt;spec&lt;/code&gt;". Also, I can run the tests with "&lt;code&gt;jasmine&lt;/code&gt;" command. Also, as references I used &lt;a href="https://jasmine.github.io/tutorials/your_first_suite" title="Jasmine Documents"&gt;Jasmine Documents&lt;/a&gt; to practice and understand further. The jasmine tests are different from racket because we have to run Jasmine tests from the command line unlike rackunit. I wrote test modules to check test suites as well. Also, I learned about test coverage. We need to use another tool to get test coverage information which is "&lt;code&gt;nyc&lt;/code&gt;". We can use the "&lt;code&gt;nyc jasmine&lt;/code&gt;" command to get test coverage information. I added an incorrect function and checked how test coverage works. I learned how to use the debugger in the lab, but &amp;ldquo;Chromium DevTools&amp;rdquo; did not work in my lab computer and because of that I had to use the command line debugger. However, I manage to find a workaround for that issue and I was able to use the Chromium DevTools. Moreover, I learned about JavaScript objects and I find it is very similar to Java object calls and creations. Furthermore, I learned about parsing JSON and it was different from how we did it in Racket.&lt;/p&gt;
+
+&lt;p&gt;Jasmine was familiar to me because I have worked with Jasmine before and also writing test modules was easy for me as I have done that before. Test coverage was new to me since I have not done that before, but since I have done the test coverage in Racket it was not that hard for me to understand. Parsing JSON was new to me in JavaScript even though I have done it in Racket because it is very different how we do it Racket.&lt;/p&gt;
+
+&lt;p&gt;I practiced writing test modules and I was able to polish my knowledge in writing test modules because I did not write test modules in Jasmine recently.&lt;/p&gt;
+
+&lt;p&gt;I was surprised that Chromium debugger did not work on my lab computer and I discussed with my professor regarding the issue and I found a workaround after discussing with him and I was able to get it to work and until that I used the command kind Node debugger.&lt;/p&gt;
+
+&lt;p&gt;We were given to read the jasmine tutorial and practice some coding to get familiar with Jasmine which helped to understand most of the jasmine concepts.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 495,&lt;/code&gt; &lt;code&gt;Average Reading Time: 6-7 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-09.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 08</title>
+   <link>http://www.example.com/2022/10/lab-08.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-08-html</guid>
+   <pubDate>Thu, 06 Oct 2022 15:48:55 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-08---running-javascript--javascript-funtions--nodejs-modules"&gt;Lab 08 - Running JavaScript / JavaScript funtions / Node.js modules&lt;/h1&gt;
+
+&lt;p&gt;In Lab 08, I started learning a new language which is &amp;ldquo;JavaScript&amp;rdquo;. I learned few ways to run a JavaScript program such as in a file, in a browser, and in the REPL. &lt;code&gt;console.log("Hello World");&lt;/code&gt; is the print statement for JavaScript which I use to print text. Also, the commande to run the JavaScript programs in the terminal is "&lt;code&gt;node file.js&lt;/code&gt;". Just like in Racket, I was able to run commands in the REPL. Also, I learned to translate Racket expressions into JavaScript like "&lt;code&gt;(* (+ 1 2 3) 7)&lt;/code&gt;" Moreoever, I learned about JavaScript equality and type coercion. Type coercion is a very important part in JavaScript. Type coercion is the automatic conversion of values from a data type to another. I used some reference given in the lab material to understand the conept and practice. I also use external materials to understand the concept further. &lt;a href="https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion" title="Type Coercion"&gt;Type Coercion&lt;/a&gt;. We can use "&lt;code&gt;===&lt;/code&gt;" to avoid type coercion which is called strict equality checker. I also learned about JavaScript functions and how it is similar to racket functions. "&lt;code&gt;let&lt;/code&gt;" evaluates the val-exprs left to right and create a new location for each id, but assignment assigns the result individually to the ids using. "&lt;code&gt;return&lt;/code&gt;" is mandotary in java because it ends the function execution and specifies a value to be returned to the function caller. Arrow functions are different from anonymous functions because arrow functions provide lexical binding which means that it is possible to get the control back on the value of this inside the function&amp;rsquo;s body. Anonymous function are just functions declarations without a name.&lt;/p&gt;
+
+&lt;p&gt;I have learned JavaScript before and because of that it waseasy for me to understand the concepts I learned in this lab. However, I was able to improve my knowledge by practicing the questions that was given in the lab.&lt;/p&gt;
+
+&lt;p&gt;It was interesting to know how Racket functions can be converted to JavaScript functions and to see how different they are when compared.&lt;/p&gt;
+
+&lt;p&gt;Video clip was given in the lab material which is interesting and It helped me to bring back my knowkledge about JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 485,&lt;/code&gt; &lt;code&gt;Average Reading Time: 5-6 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-08.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 07</title>
+   <link>http://www.example.com/2022/10/lab-07.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-10-lab-07-html</guid>
+   <pubDate>Tue, 04 Oct 2022 16:08:56 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-07---macros-single-pattern-macros--multiple-patterns-and-recursion--redifining-or"&gt;Lab 07 - Macros (Single Pattern Macros / Multiple Patterns and Recursion) / Redifining or&lt;/h1&gt;
+
+&lt;p&gt;In Lab 07, I learned about Single Pattern Macros and Multiple Patterns and Recursion under Macros. A macro is a syntactic form with an associated transformer that expands the original form into existing forms &lt;a href="https://docs.racket-lang.org/guide/macros.html#:~:text=A%20macro%20is%20a%20syntactic,small%20set%20of%20core%20constructs." title="Macros"&gt;Macros&lt;/a&gt;. Similarly to many other languages, racket gives us pattern based macros that make simple transformation easy to use. The simple way to define a macro in racket is to use &lt;a href="https://docs.racket-lang.org/reference/stx-patterns.html?q=define-syntax-rule#%28form._%28%28lib._racket%2Fprivate%2Fstxcase-scheme..rkt%29._with-syntax%29%29" title="define-syntax-rule"&gt;define-syntax-rule&lt;/a&gt;. We can think of these syntax rules as functions that do not evaluate their arguments. Macros is a very important part in racket implimentation stratergy. Also, some syntax we saw in racket are implimented as a macro. I also learned to define &amp;ldquo;Or&amp;rdquo; in terms of &amp;ldquo;if&amp;rdquo; in a similar way to &amp;ldquo;And&amp;rdquo; using a practice problem given in the lab 07. I also learned about multiple patterns and recursion using &lt;code&gt;let&lt;/code&gt; and &lt;code&gt;let*&lt;/code&gt;. Basically, &lt;code&gt;let*&lt;/code&gt; behaves like a nested set of &lt;code&gt;letS&lt;/code&gt;. We can use recursion to impliment this. We have to use &lt;code&gt;define-syntax&lt;/code&gt; with &lt;code&gt;syntax-rules&lt;/code&gt; to make a recursive macro.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;let&lt;/code&gt; and &lt;code&gt;let*&lt;/code&gt; were familar to me since I used them in a previous lab for this course, but concept of macro was new to me. I have used macro before, but I did not know it was called macro. However, it was a good learning experience for me.&lt;/p&gt;
+
+&lt;p&gt;I practiced how to use &lt;code&gt;let&lt;/code&gt; and &lt;code&gt;let*&lt;/code&gt; using the practice problems given in the lab. I understood the concept more clearly after I practice.&lt;/p&gt;
+
+&lt;p&gt;I was surprised to know about macros because even though I have used these before, I did not know they were called macros. Also, it was interestigng, how recursion is used to imliment macros.&lt;/p&gt;
+
+&lt;p&gt;Racket guide for macros were given as a reference which was optional to read, but after reading, I understood the concept very clearly. Also, for further understanding I used materials I found on the internet and I have linked some of them to this blog post.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 490,&lt;/code&gt; &lt;code&gt;Average Reading Time: 6-7 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/10/lab-07.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 06</title>
+   <link>http://www.example.com/2022/09/lab-06.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-09-lab-06-html</guid>
+   <pubDate>Thu, 29 Sep 2022 00:23:26 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-06---hash-tables--explorer--json"&gt;Lab 06 - Hash Tables / Explorer / JSON&lt;/h1&gt;
+
+&lt;p&gt;In lab 06, I learned about &amp;ldquo;hash tables&amp;rdquo;. Hash map is another name for hash table which is a data structure that implements associative array or dictionary. It maps keys to values. Also, immutable hash table can be updated as the same way as lists are updated by returning a new updated data structure. &lt;a href="https://en.wikipedia.org/wiki/Hash_table" title="Hash Tables"&gt;Hash Tables&lt;/a&gt;. Also, I learned how to use &amp;ldquo;Explorer&amp;rdquo; in racket. &amp;ldquo;Explorer&amp;rdquo; in Racket is a utility for interactive exploration of complex data structure. Java immutable hash tables and racket immutable hash tables are different because the initial default capacity of hashtable class in java is 11. However, both has similarities such as both hash tables are synchronized and doesn&amp;rsquo;t allow null key or value. In java, if the hash table key is mutable in java then the &lt;code&gt;hashCode()&lt;/code&gt; of the key will not be consistent anymore and will cause failure and will cause memory leak &lt;a href="Mutability" title="Mutability"&gt;Mutability&lt;/a&gt;. Also, I learned about parsing JSON file and extracting the desired data in this lab.&lt;/p&gt;
+
+&lt;p&gt;All the concepts I learned in this lab was new to me except for parsing JSON files because I learned about parsing JSON files in &amp;ldquo;CS1083&amp;rdquo;. Hash Tables and Explorer were new concepts for me, but I was able to successfully understand both the concepts with the material provided in the lab.&lt;/p&gt;
+
+&lt;p&gt;I practiced parsing and extracting desired data using JSON files and I also learned how to use and update hash tables with the exercises provided in the lab. I was able to practice my skill on using explorer.&lt;/p&gt;
+
+&lt;p&gt;Hash table was quite interesting to me since it was my first time that I saw Hash tables. I have heard about hash tables before, but I did not get a chance to work with hash tables. Also, I find that hash table is a very important data structure while programming.&lt;/p&gt;
+
+&lt;p&gt;In the end of the lab an additional exercise was given to practice hash tables using the tail recursion which was hard for me, but after playing with the sample program for a while, I figured out how to implement tail recursion with hash tables.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 480,&lt;/code&gt; &lt;code&gt;Average Reading Time: 5-6 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/09/lab-06.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 05</title>
+   <link>http://www.example.com/2022/09/lab-05.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-09-lab-05-html</guid>
+   <pubDate>Tue, 27 Sep 2022 17:31:35 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-05---tail-recursion--for-loops--pattern-matching"&gt;Lab 05 - Tail Recursion / For loops / Pattern Matching&lt;/h1&gt;
+
+&lt;p&gt;In Lab 05, I learned about the Tail Recursion, for loops and pattern matching in racket. Tail resursion is a instance of recursion, where the return value of a method or a function is calculated as a call to itself. We used a program which counts odds from a given list to understand this concept. Also, the debugger was used to identify how deep the stack goes. &lt;a href="https://towardsdatascience.com/what-is-tail-recursion-elimination-or-why-functional-programming-can-be-awesome-43091d76915e" title="Tail Recursion"&gt;Tail Recursion&lt;/a&gt;. Also, I learned and practiced for loops in Racket. Many Racket programmers like to use for loops over tail recursion since it is simple and easier to construct. Also, we used the same count odds program to understand and practice tail recursion. In both tail recursion and for loops, we need a counter variable. Also, I learned about pattern matching in racket which is a interesting and useful feature. Pattern matching is used in syntax-case to define macros, but also in more familiar function definition using match. I used few different programs to understand this concept such as a program that finds the length of the list and calculate the sum of two integers to understand the parsing with match concept.&lt;/p&gt;
+
+&lt;p&gt;Tail Recursion and For loops were familiar concepts for me from this lab because I have learned and practiced tail recursion in java in one of my other courses. Pattern matching was a new interesting concept for me.&lt;/p&gt;
+
+&lt;p&gt;As a new skill, I practiced writing pattern matching programs and the exercises provided in the lab were very helpful for me to understand and practice the concept.&lt;/p&gt;
+
+&lt;p&gt;Passing with match was a very exciting concept for me and it was hard for me to understand it first, but after I read the documentation, I was able to understand the concept.&lt;/p&gt;
+
+&lt;p&gt;I was given to write two new programs to practice passing with match concept and it was easy since I practiced the program that was given in the lab.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 451,&lt;/code&gt; &lt;code&gt;Average Reading Time: 4-5 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/09/lab-05.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 04</title>
+   <link>http://www.example.com/2022/09/lab-04.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-09-lab-04-html</guid>
+   <pubDate>Thu, 22 Sep 2022 15:21:06 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-04---functions-as-values--recursion--scribble--modules"&gt;Lab 04 - Functions as Values / Recursion / Scribble / Modules&lt;/h1&gt;
+
+&lt;h2 id="questions-from-the-previous-lab"&gt;Questions from the previous Lab&lt;/h2&gt;
+
+&lt;p&gt;Testing is very important for dynamically because of the design of the language. An object oriented language is designed to mutate the state and change it around. Also, many of the object oriented languages facilitate visibility and access of shared internal state such as encapsulation, scoping. When a state mutates in any language, testing is the best option to make sure everything is working fine. &lt;a href="https://www.codemag.com/article/1206051/The-%E2%80%9CDanger%E2%80%9D-of-Dynamic-Languages" title="Dynamically Typed Languages"&gt;Dynamically Typed Languages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Some software problems are hard to find with testing. For instance, Calculation errors and logic errors are hard to find with testing. Sometimes data type mismatch causes calculation errors.&lt;/p&gt;
+
+&lt;p&gt;It is hard to do unit testing for mutable state because it is hard to predict and maintain because the behavior of a method that depends on mutable global state is not possible to predict by checking th source code. Therefore, it is important to consider the current value and the sequence of events that could change it earlier.&lt;/p&gt;
+
+&lt;h2 id="lab--04"&gt;Lab &amp;ndash; 04&lt;/h2&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;#lang racket, #lang slideshow&lt;/code&gt; - This is very similar to importing packages in Java.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;(+ 1 2)&lt;/code&gt; - This is similar to returning the addition of 1 and 2.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;(rectangle 10 10)&lt;/code&gt; - Similar to a method called in Java passing values.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;(define r 10)&lt;/code&gt; - similar to initializing vaiable in Java (int r = 10;).&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;(define (square x) (rectangle x x))&lt;/code&gt; - Declaring a method.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;(colorize (square 10) "red")&lt;/code&gt; - Method Call&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;code&gt;(let* ([x 10] [y (+ x 10)]) (* x y))&lt;/code&gt; - int x = 10; int y = x+10; return x*y;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;Racket functions are very useful and apply function is one function that we learned in the lab and it helps to reduce the repeated code in definitions. Basically, apply function collect all the arguments and make it as one argument and then can also add it to a list. Also, recursion is one of the new concepts learned in the Lab 04. Recursion is very useful and it has many advantages and disadvantages as well. Scribble is also a new concept which is a markup language by frog. Scribble is easily extensible using Racket. Also, Scribble a good example for a Domain Specific Language and it is for producing documents. Also, learnt about Racket Modules, submodules, require and provide.&lt;/p&gt;
+
+&lt;p&gt;I learned how to write modules and functions in racket effectively in this lab. I was able to understand unit testing very well. Also, I was able to practice Git Bisect in this lab which helped me to understand that concept very well. The modules were interesting to me because it is similar to java methods, but in java we use a totally differeny syntax to create a method.&lt;/p&gt;
+
+&lt;p&gt;In this lab we were given to read the racket guide to understand Modules. However, when I read it first I did not understand it properly, after reading it carefully I was able to understand it fully.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 488,&lt;/code&gt; &lt;code&gt;Average Reading Time: 5-6 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/09/lab-04.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Scribble Demo</title>
+   <link>http://www.example.com/2022/09/scribble-demo.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-09-scribble-demo-html</guid>
+   <pubDate>Wed, 21 Sep 2022 12:44:36 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;p&gt;Replace this with your post text. Add one or more comma-separated
+Tags above. The special tag &amp;lsquo;DRAFT&amp;lsquo; will prevent the post from being
+published.&lt;/p&gt;&lt;a href="http://www.example.com/2022/09/scribble-demo.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab03</title>
+   <link>http://www.example.com/2022/09/lab03.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-09-lab03-html</guid>
+   <pubDate>Thu, 15 Sep 2022 15:32:22 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-03---racket-unit-tests--git-bisect--test-coverage-in-racket"&gt;Lab 03 - Racket Unit Tests / GIT Bisect / Test Coverage in Racket&lt;/h1&gt;
+
+&lt;h2 id="questions-from-the-previous-lab"&gt;Questions from the previous Lab&lt;/h2&gt;
+
+&lt;p&gt;&amp;ldquo;DrRacket&amp;rdquo; is a good IDE and it is a bit different from what I have used before. &amp;ldquo;DrRacket&amp;rdquo; has the feature to display all the places an identifier have been used when I mouses over and identifier and I have never seen this feature in other IDEs that I used. Also, racket is a simple software and easy to use because the size of the application is not too big. I learned about &amp;ldquo;Racket&amp;rdquo; from the &lt;a href="https://racket-lang.org/" title="Racket"&gt;Racket&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I have been using text editors to code for a long time and I started using IDEs recently. From my perspective, a text editor is a computer tool used to edit plain text files. However, IDEs are more complex than a text editor because they provide software environment for developers to write codes easily and provide all the developer tools as well.&lt;/p&gt;
+
+&lt;p&gt;Long term for REPL is Read-Eval-Print Loop and it is basically read user inputs and evaluate and then the results will be returned to the user. REPL is very interactive to explore tools available in environments or programming languages.&lt;/p&gt;
+
+&lt;p&gt;I learned new git concepts in this lab such as remote, merging, and conflict. A remote is a git repository that is hosted on the internet or another network. I followed a very useful tutorial about this on this &lt;a href="https://www.gitkraken.com/learn/git/tutorials/what-is-git-remote" title="Website"&gt;Website&lt;/a&gt;. Also, git merging is putting a forked history back together again. For instance, you can cut out a branch from master branch and after you finish work on your branch you can merge your branch to the master branch. I learned about merging from the &lt;a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge" title="Tutorial"&gt;Tutorial&lt;/a&gt;. Morover, conflicting means if two people try to edit the same file and the same line in two different branches and tries to merge them or in one branch the file is deleted, but in the other branch the file is edited. &lt;a href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts" title="Tutorial"&gt;Tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Also, I learned about unit tests in Racket which is interesting and I practiced with a &lt;a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/labs/L03/_file.rkt/" title="code"&gt;code&lt;/a&gt;.  that was given to us in the lab. I used &lt;code&gt;(check-equal? (my-+ 1 1) 2 "Simple addition")&lt;/code&gt; and &lt;code&gt;(check-equal? (my-* 1 2) 2 "Simple multiplication")&lt;/code&gt; to practice.&lt;/p&gt;
+
+&lt;p&gt;I also, learned about Test Coverage tool. It is a great tool identify known bugs and odd behavior. It shows all the issues highlighted in yellow which is easier to identify.&lt;/p&gt;
+
+&lt;p&gt;Anotther thing that I learned is "&lt;code&gt;git bisect&lt;/code&gt;". This is used to discover whether the commit has introduced a bug in the code it helps to track down the commit where the code works and where it does not work. I used "&lt;code&gt;git bisect --run "raco test file.rkt&lt;/code&gt;" to practice. Also, I practiced "&lt;code&gt;git revert&lt;/code&gt;" command to undo bad commits.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m familiar with &lt;code&gt;"git bisect"&lt;/code&gt; and &lt;code&gt;"git revert"&lt;/code&gt; but unit test in Racket and Test coverage tool in DrRacket is new to me and it was interesting to learn.&lt;/p&gt;
+
+&lt;p&gt;I needed more practice with Racket because Racket was new to me and this was a very good practice to me. I learned to write recursive functions and submodules with Racket. Also, Racket test coverage tool was interesting to learn.&lt;/p&gt;
+
+&lt;p&gt;I was struggling with the racket recursive functions, but managed to get help from the TA and I was able to understand the concept.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 490,&lt;/code&gt; &lt;code&gt;Average Reading Time: 5-6 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/09/lab03.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab02</title>
+   <link>http://www.example.com/2022/09/lab02.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-09-lab02-html</guid>
+   <pubDate>Mon, 12 Sep 2022 15:07:45 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-02---git-tutorial-continued--racket-tutorial--git-clone-multiple-repos"&gt;Lab 02 - GIT Tutorial Continued / Racket Tutorial / GIT Clone (Multiple Repos)&lt;/h1&gt;
+
+&lt;p&gt;I learned about git grep in part one of the lap and git grep is a very useful tool to find occurences of strings in the git repository which helps to delete and modify unwanted strings in the project. I used &lt;a href="https://git-scm.com/docs/git-grep" title="GIT GREP"&gt;Git Grep&lt;/a&gt; as additional reference and the command I used is "&lt;code&gt;git grep disqus&lt;/code&gt;". Also, I learned how to check what is about to be commited by using "&lt;code&gt;git diff --cached&lt;/code&gt;" and it will only dsiplay the changes of tracked files that are in staging area. I used &lt;a href="https://git-scm.com/docs/git-diff" title="GIT DIFF"&gt;Git Diff&lt;/a&gt; as a reference. Moreover, I learned an additonal command that I did not previously which is "&lt;code&gt;git commit -a&lt;/code&gt;" and this command helps to add modified files to the index, and commit in one step, but it will not add new files. Furthermore, I learned about cleaning up generated files using "&lt;code&gt;raco frog --clean&lt;/code&gt;" command and these files generated by some tools we use based on some source files and it is a common practice not to track generated files in version control. I can use "&lt;code&gt;git diff --stat&lt;/code&gt;" command to check what is changed after cleaning he generated files I used &lt;a href="https://docs.racket-lang.org/frog/Quick_start.html?q=frig#%28part._.Project_file_tree%29" title="Generated Files"&gt;Generated Files&lt;/a&gt; as a source to identify the generated file. One more new thing I learned is to check the project history using "&lt;code&gt;git log&lt;/code&gt;" command and we can add different keywords to the end and such as "&lt;code&gt;-p&lt;/code&gt;" and "&lt;code&gt;--stat --summary&lt;/code&gt;" to get the output based on your need. In addition, I learned about &amp;ldquo;Racket&amp;rdquo; which is a modern functional programming laguage and I learned how to install, run programs and debug with &amp;ldquo;Racket&amp;rdquo;. Some programs I wrote are drawing shapes and printing out mesages. Also, I learned about &amp;ldquo;Racket&amp;rdquo; functions, scope and Lists using &lt;a href="https://docs.racket-lang.org/quick/index.html" title="Racket Tutorial"&gt;Racket Tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Working in multiple git repos is familiar to me since I was using git a lot when I did my co-op term. I use git commands like "&lt;code&gt;git clone&lt;/code&gt;" and many more related to git while I was working. However, &amp;ldquo;Racket&amp;rdquo; was a new experience for since I did not have any background on &amp;ldquo;Racket&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m very bad at writing a commit message while committing my changes, and I practiced writing a good commit message and I asked the person who sat next to me in the lab to review my commit message to make sure it is understandable to him. I also followed &lt;a href="https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/" title="Commit Message Tutorial"&gt;Commit Message Tutorial&lt;/a&gt; to learn how to write a good commit message. Also, I&amp;rsquo;m practicing how to write a journal.&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Racket Tutorial&amp;rdquo; was one thing that I got interested and it was interesting to learn about the &amp;ldquo;Racket&amp;rdquo; functions which can do many more things than they actually shows.&lt;/p&gt;
+
+&lt;p&gt;The lab instructions were crystal clear and it was easy to follow and understand. After going home I managed to clone the repository to my personal machine and see my changes following the lab instruction and without the help of the instructor.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Number Of Words: 486,&lt;/code&gt; &lt;code&gt;Average Reading Time: 5 minutes&lt;/code&gt;&lt;/p&gt;&lt;a href="http://www.example.com/2022/09/lab02.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item>
+  <item>
+   <title>Lab 01</title>
+   <link>http://www.example.com/2022/09/lab-01.html?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:http-www-example-com:-2022-09-lab-01-html</guid>
+   <pubDate>Wed, 07 Sep 2022 13:17:45 UT</pubDate>
+   <author>The Unknown Author</author>
+   <description>
+&lt;h1 id="lab-01"&gt;LAb 01&lt;/h1&gt;
+
+&lt;h2 id="what-new-concepts-if-any-did-you-learn-about-in-this-lab"&gt;What new concepts (if any) did you learn about in this lab?&lt;/h2&gt;
+
+&lt;p&gt;I learned new concepts such as version control systems, Delta-based version control, frog and git background (Subversion, Stage, Commit, Modify).&lt;/p&gt;
+
+&lt;h2 id="if-you-have-used-a-version-control-system-other-than-git-before-what-is-one-important-difference-between-that-system-and-git"&gt;If you have used a version control system other than git before, what is one important difference between that system and git?&lt;/h2&gt;
+
+&lt;p&gt;Yes, I have used Apache Subversion, one important difference is that git has a distributed model and SVN has a centralized model.&lt;/p&gt;
+
+&lt;h2 id="if-you-have-used-git-before-what-is-one-thing-about-git-you-like-and-one-you-dont-like"&gt;If you have used git before, what is one thing about git you like, and one you don&amp;rsquo;t like?&lt;/h2&gt;
+
+&lt;p&gt;I like the branching capability of git, and I don&amp;rsquo;t like to use git on windows because it is slow.&lt;/p&gt;
+
+&lt;h2 id="if-you-have-ever-used-a-version-control-system-before-what-strategies-have-you-used-to-keep-version-of-files"&gt;If you have ever used a version control system before, what strategies have you used to keep version of files?&lt;/h2&gt;
+
+&lt;p&gt;I like to keep copies of files because I can easily track using folder name and modified dates. Also, if the files get corrupted I can replace always.&lt;/p&gt;&lt;a href="http://www.example.com/2022/09/lab-01.html?utm_source=all&amp;amp;utm_medium=RSS"&gt;&lt;em&gt;More&amp;hellip;&lt;/em&gt;&lt;/a&gt;</description></item></channel></rss>

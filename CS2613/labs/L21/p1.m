@@ -1,0 +1,1 @@
+data = [0,0,0; 0,0,1; 0,1,0; 1,1,1]cells = num2cell(data,2)cellfun(@sum,cells)

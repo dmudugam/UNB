@@ -1,0 +1,55 @@
+student@cs2613:~$ cd fcshome
+student@cs2613:~/fcshome$ ls
+CS1103  CS2263   Downloads           cs2613             hs_err_pid14880.log
+CS2043  Desktop  cs2043-db-info.txt  eclipse-workspace
+student@cs2613:~/fcshome$ cd cs2613/
+student@cs2613:~/fcshome/cs2613$ cd L09
+student@cs2613:~/fcshome/cs2613/L09$ LS
+bash: LS: command not found
+student@cs2613:~/fcshome/cs2613/L09$ jasmine init
+student@cs2613:~/fcshome/cs2613/L09$ ls
+spec
+student@cs2613:~/fcshome/cs2613/L09$ ls -R spec
+spec:
+support
+
+spec/support:
+jasmine.json
+student@cs2613:~/fcshome/cs2613/L09$ more spec/support/jasmine.json
+{
+  "spec_dir": "spec",
+  "spec_files": [
+    "**/*[sS]pec.?(m)js"
+  ],
+  "helpers": [
+    "helpers/**/*.?(m)js"
+  ],
+  "env": {
+    "stopSpecOnExpectationFailure": false,
+    "random": true
+  }
+}
+student@cs2613:~/fcshome/cs2613/L09$ gedit builtins.spec.js
+student@cs2613:~/fcshome/cs2613/L09$ cd specs
+bash: cd: specs: No such file or directory
+student@cs2613:~/fcshome/cs2613/L09$ cd spec
+student@cs2613:~/fcshome/cs2613/L09/spec$ ls
+support
+student@cs2613:~/fcshome/cs2613/L09/spec$ gedit builtins.spec.js
+student@cs2613:~/fcshome/cs2613/L09/spec$ ls
+builtins.spec.js  support
+student@cs2613:~/fcshome/cs2613/L09/spec$ cd ..
+student@cs2613:~/fcshome/cs2613/L09$ ls -l
+total 0
+drwxrwx--- 1 root vboxsf 55 Oct 12 08:39 spec
+student@cs2613:~/fcshome/cs2613/L09$ jasmine
+Randomized with seed 40718
+Started
+....
+
+
+4 specs, 0 failures
+Finished in 0.013 seconds
+Randomized with seed 40718 (jasmine --random=true --seed=40718)
+student@cs2613:~/fcshome/cs2613/L09$ 
+

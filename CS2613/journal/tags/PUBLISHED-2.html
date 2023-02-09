@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Posts tagged 'PUBLISHED' (page 2)</title>
+    <meta name="description" content="Posts tagged 'PUBLISHED' (page 2)">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="PUBLISHED">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="http://www.example.com/tags/PUBLISHED-2.html">
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/PUBLISHED.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/PUBLISHED.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+
+      <a href="/index.html" class="navbar-brand">My Blog Brand</a>
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbar_collapse" aria-controls="navbar_collapse"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_collapse">
+          <ul class="navbar-nav mr-auto">
+
+
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b>
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/tags/PUBLISHED.html">PUBLISHED</a>
+              </div>
+            </li>
+
+            <li>
+              <a class="nav-link" href="/About.html">About</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/PUBLISHED.atom.xml">Atom</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/PUBLISHED.rss.xml">RSS</a>
+            </li>
+          </ul>
+      </div>
+
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+          <h1>Posts tagged <em>PUBLISHED</em></h1>
+
+          <article>
+  <header>
+    <h2><a href='/2022/10/lab-10.html'>Lab 10</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-17" pubdate="true">2022-10-17</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-10---methods--prototypes--classes--javascript-arrays--array-methods--recursion">Lab 10 - Methods / Prototypes / Classes / JavaScript Arrays / Array Methods / Recursion</h1>
+
+<p>In Lab 10, I learned about JavaScript methods and objects. JavaScript methods are actions that can be performed on objects and a JavaScript method is a property containing a function defintion <a href="https://www.w3schools.com/js/js_object_methods.asp" title="JavaScript Methods">JavaScript Methods</a>. In JavaScript, "<code>this</code>" keyword refers to an object. In JavaScript, when the function method is called as "<code>object.method()</code>", the special variable "<code>this</code>" is defined to mean the current object. Also, I learned about Prototypes. Prototypes are the mechanism by whic JavaScript objects inherits features from one another <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes" title="JavaScript Prototype">Prototype</a>. I practiced this concept using an example method which inherited from the prototype, but the fields were not inherited. It is helpful because, it allows to easily define methods to all instances of a particular object. Moreover, I learned about JavaScript classes which is not very similar to Java classes. JavaScript version "<code>ES2015</code>", now provides the "<code>class</code>" keyword to concisely generate constructors and prototypes. In JavaScript, "<code>new</code>" keyword is used along with the prototype property of a constructor. Below is the sample practice program I used in the lab to practice the concept,</p>
+
+<pre>
+function Time(hours, mins){
+    this.hours=hours;
+    this.mins=mins;
+}
+
+Time.prototype.plus=function (other) {
+    let raw=timePlus(this,other);
+    return new Time(raw.hours, raw.mins);
+}
+
+G = new Time(20,59);
+H = new Time(11,11);
+
+I=G.plus(H);
+console.log(I);</pre>
+
+<p>Also, I learned about the JavaScript arrays which are implemented as objects and because of that sometime their behaviour is surprising. I practiced the array concept using few practice problems given in the lab exercises. The first practice program I wrote was to calculate the sum if a range of an array whichi is easier. Furthermore, I learned about array methods. JavaScript has some higher order methods that can take functions as arguments. Also, JavaScript "
+ <i>reduce</i>" function is similar to "
+ <i>foldl</i>" in racket. "
+ <i>forEach</i>" function is different from "
+ <i>map</i>" function in racket because it does not produce a list, however, it helps to iterate through the list with giving out of bound errors. Also, I learned about recursion in JavaScript which is the same concept in racket and Java as well but the way of writing recursion methods is a lot similar to Java.</p>
+
+<p>Arrays and Recursion concepts were familiar to me since I have worked with Java before, but prototypes was a new concept for me. However, it did not take much time to get familiar with prototypes because I learned a similar kind concept in racket.</p>
+
+<p>I practiced writing recursive methods in JavaScript and I also practiced writing JavaScript classes even though I have written Java classes, Writing JavaScript classes is a bit different than writing Java classes.</p>
+
+<p>The concept of prototypes surprised me because I did not know a concept like exist in JavaScript and it also helps to reduce the number of objects that need to be created which helps to write more efficent programs.</p>
+
+<p>I was given to write some practice examples on my own and it was hard to write it at first because some of the concepts were new to me like prototypes, but I was able to do it after following the instructions.</p>
+
+<p><code>Number Of Words: 476,</code> <code>Average Reading Time: 5-6 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-10.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/10/lab-09.html'>Lab 09</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-13" pubdate="true">2022-10-13</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-09---jasmin--test-modules--test-coverage--node-debugger--javascript-objects--json">Lab 09 - Jasmin / Test Modules / Test Coverage / Node Debugger / JavaScript Objects / JSON</h1>
+
+<p>In Lab 09, I learned about Jasmine which is a behavior driven development framework for testing JavaScript code and it does not depend on any other JavaScript frameworks. I use "<code>jasmine init path</code>" command to create jasmine configuration under "<code>spec</code>". Also, I can run the tests with "<code>jasmine</code>" command. Also, as references I used <a href="https://jasmine.github.io/tutorials/your_first_suite" title="Jasmine Documents">Jasmine Documents</a> to practice and understand further. The jasmine tests are different from racket because we have to run Jasmine tests from the command line unlike rackunit. I wrote test modules to check test suites as well. Also, I learned about test coverage. We need to use another tool to get test coverage information which is "<code>nyc</code>". We can use the "<code>nyc jasmine</code>" command to get test coverage information. I added an incorrect function and checked how test coverage works. I learned how to use the debugger in the lab, but &ldquo;Chromium DevTools&rdquo; did not work in my lab computer and because of that I had to use the command line debugger. However, I manage to find a workaround for that issue and I was able to use the Chromium DevTools. Moreover, I learned about JavaScript objects and I find it is very similar to Java object calls and creations. Furthermore, I learned about parsing JSON and it was different from how we did it in Racket.</p>
+
+<p>Jasmine was familiar to me because I have worked with Jasmine before and also writing test modules was easy for me as I have done that before. Test coverage was new to me since I have not done that before, but since I have done the test coverage in Racket it was not that hard for me to understand. Parsing JSON was new to me in JavaScript even though I have done it in Racket because it is very different how we do it Racket.</p>
+
+<p>I practiced writing test modules and I was able to polish my knowledge in writing test modules because I did not write test modules in Jasmine recently.</p>
+
+<p>I was surprised that Chromium debugger did not work on my lab computer and I discussed with my professor regarding the issue and I found a workaround after discussing with him and I was able to get it to work and until that I used the command kind Node debugger.</p>
+
+<p>We were given to read the jasmine tutorial and practice some coding to get familiar with Jasmine which helped to understand most of the jasmine concepts.</p>
+
+<p><code>Number Of Words: 495,</code> <code>Average Reading Time: 6-7 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-09.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/10/lab-08.html'>Lab 08</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-06" pubdate="true">2022-10-06</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-08---running-javascript--javascript-funtions--nodejs-modules">Lab 08 - Running JavaScript / JavaScript funtions / Node.js modules</h1>
+
+<p>In Lab 08, I started learning a new language which is &ldquo;JavaScript&rdquo;. I learned few ways to run a JavaScript program such as in a file, in a browser, and in the REPL. <code>console.log("Hello World");</code> is the print statement for JavaScript which I use to print text. Also, the commande to run the JavaScript programs in the terminal is "<code>node file.js</code>". Just like in Racket, I was able to run commands in the REPL. Also, I learned to translate Racket expressions into JavaScript like "<code>(* (+ 1 2 3) 7)</code>" Moreoever, I learned about JavaScript equality and type coercion. Type coercion is a very important part in JavaScript. Type coercion is the automatic conversion of values from a data type to another. I used some reference given in the lab material to understand the conept and practice. I also use external materials to understand the concept further. <a href="https://developer.mozilla.org/en-US/docs/Glossary/Type_coercion" title="Type Coercion">Type Coercion</a>. We can use "<code>===</code>" to avoid type coercion which is called strict equality checker. I also learned about JavaScript functions and how it is similar to racket functions. "<code>let</code>" evaluates the val-exprs left to right and create a new location for each id, but assignment assigns the result individually to the ids using. "<code>return</code>" is mandotary in java because it ends the function execution and specifies a value to be returned to the function caller. Arrow functions are different from anonymous functions because arrow functions provide lexical binding which means that it is possible to get the control back on the value of this inside the function&rsquo;s body. Anonymous function are just functions declarations without a name.</p>
+
+<p>I have learned JavaScript before and because of that it waseasy for me to understand the concepts I learned in this lab. However, I was able to improve my knowledge by practicing the questions that was given in the lab.</p>
+
+<p>It was interesting to know how Racket functions can be converted to JavaScript functions and to see how different they are when compared.</p>
+
+<p>Video clip was given in the lab material which is interesting and It helped me to bring back my knowkledge about JavaScript.</p>
+
+<p><code>Number Of Words: 485,</code> <code>Average Reading Time: 5-6 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-08.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/10/lab-07.html'>Lab 07</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-10-04" pubdate="true">2022-10-04</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-07---macros-single-pattern-macros--multiple-patterns-and-recursion--redifining-or">Lab 07 - Macros (Single Pattern Macros / Multiple Patterns and Recursion) / Redifining or</h1>
+
+<p>In Lab 07, I learned about Single Pattern Macros and Multiple Patterns and Recursion under Macros. A macro is a syntactic form with an associated transformer that expands the original form into existing forms <a href="https://docs.racket-lang.org/guide/macros.html#:~:text=A%20macro%20is%20a%20syntactic,small%20set%20of%20core%20constructs." title="Macros">Macros</a>. Similarly to many other languages, racket gives us pattern based macros that make simple transformation easy to use. The simple way to define a macro in racket is to use <a href="https://docs.racket-lang.org/reference/stx-patterns.html?q=define-syntax-rule#%28form._%28%28lib._racket%2Fprivate%2Fstxcase-scheme..rkt%29._with-syntax%29%29" title="define-syntax-rule">define-syntax-rule</a>. We can think of these syntax rules as functions that do not evaluate their arguments. Macros is a very important part in racket implimentation stratergy. Also, some syntax we saw in racket are implimented as a macro. I also learned to define &ldquo;Or&rdquo; in terms of &ldquo;if&rdquo; in a similar way to &ldquo;And&rdquo; using a practice problem given in the lab 07. I also learned about multiple patterns and recursion using <code>let</code> and <code>let*</code>. Basically, <code>let*</code> behaves like a nested set of <code>letS</code>. We can use recursion to impliment this. We have to use <code>define-syntax</code> with <code>syntax-rules</code> to make a recursive macro.</p>
+
+<p><code>let</code> and <code>let*</code> were familar to me since I used them in a previous lab for this course, but concept of macro was new to me. I have used macro before, but I did not know it was called macro. However, it was a good learning experience for me.</p>
+
+<p>I practiced how to use <code>let</code> and <code>let*</code> using the practice problems given in the lab. I understood the concept more clearly after I practice.</p>
+
+<p>I was surprised to know about macros because even though I have used these before, I did not know they were called macros. Also, it was interestigng, how recursion is used to imliment macros.</p>
+
+<p>Racket guide for macros were given as a reference which was optional to read, but after reading, I understood the concept very clearly. Also, for further understanding I used materials I found on the internet and I have linked some of them to this blog post.</p>
+
+<p><code>Number Of Words: 490,</code> <code>Average Reading Time: 6-7 minutes</code></p>
+  <footer>
+    <a href='/2022/10/lab-07.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/09/lab-06.html'>Lab 06</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-09-28" pubdate="true">2022-09-28</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-06---hash-tables--explorer--json">Lab 06 - Hash Tables / Explorer / JSON</h1>
+
+<p>In lab 06, I learned about &ldquo;hash tables&rdquo;. Hash map is another name for hash table which is a data structure that implements associative array or dictionary. It maps keys to values. Also, immutable hash table can be updated as the same way as lists are updated by returning a new updated data structure. <a href="https://en.wikipedia.org/wiki/Hash_table" title="Hash Tables">Hash Tables</a>. Also, I learned how to use &ldquo;Explorer&rdquo; in racket. &ldquo;Explorer&rdquo; in Racket is a utility for interactive exploration of complex data structure. Java immutable hash tables and racket immutable hash tables are different because the initial default capacity of hashtable class in java is 11. However, both has similarities such as both hash tables are synchronized and doesn&rsquo;t allow null key or value. In java, if the hash table key is mutable in java then the <code>hashCode()</code> of the key will not be consistent anymore and will cause failure and will cause memory leak <a href="Mutability" title="Mutability">Mutability</a>. Also, I learned about parsing JSON file and extracting the desired data in this lab.</p>
+
+<p>All the concepts I learned in this lab was new to me except for parsing JSON files because I learned about parsing JSON files in &ldquo;CS1083&rdquo;. Hash Tables and Explorer were new concepts for me, but I was able to successfully understand both the concepts with the material provided in the lab.</p>
+
+<p>I practiced parsing and extracting desired data using JSON files and I also learned how to use and update hash tables with the exercises provided in the lab. I was able to practice my skill on using explorer.</p>
+
+<p>Hash table was quite interesting to me since it was my first time that I saw Hash tables. I have heard about hash tables before, but I did not get a chance to work with hash tables. Also, I find that hash table is a very important data structure while programming.</p>
+
+<p>In the end of the lab an additional exercise was given to practice hash tables using the tail recursion which was hard for me, but after playing with the sample program for a while, I figured out how to implement tail recursion with hash tables.</p>
+
+<p><code>Number Of Words: 480,</code> <code>Average Reading Time: 5-6 minutes</code></p>
+  <footer>
+    <a href='/2022/09/lab-06.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/09/lab-05.html'>Lab 05</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-09-27" pubdate="true">2022-09-27</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-05---tail-recursion--for-loops--pattern-matching">Lab 05 - Tail Recursion / For loops / Pattern Matching</h1>
+
+<p>In Lab 05, I learned about the Tail Recursion, for loops and pattern matching in racket. Tail resursion is a instance of recursion, where the return value of a method or a function is calculated as a call to itself. We used a program which counts odds from a given list to understand this concept. Also, the debugger was used to identify how deep the stack goes. <a href="https://towardsdatascience.com/what-is-tail-recursion-elimination-or-why-functional-programming-can-be-awesome-43091d76915e" title="Tail Recursion">Tail Recursion</a>. Also, I learned and practiced for loops in Racket. Many Racket programmers like to use for loops over tail recursion since it is simple and easier to construct. Also, we used the same count odds program to understand and practice tail recursion. In both tail recursion and for loops, we need a counter variable. Also, I learned about pattern matching in racket which is a interesting and useful feature. Pattern matching is used in syntax-case to define macros, but also in more familiar function definition using match. I used few different programs to understand this concept such as a program that finds the length of the list and calculate the sum of two integers to understand the parsing with match concept.</p>
+
+<p>Tail Recursion and For loops were familiar concepts for me from this lab because I have learned and practiced tail recursion in java in one of my other courses. Pattern matching was a new interesting concept for me.</p>
+
+<p>As a new skill, I practiced writing pattern matching programs and the exercises provided in the lab were very helpful for me to understand and practice the concept.</p>
+
+<p>Passing with match was a very exciting concept for me and it was hard for me to understand it first, but after I read the documentation, I was able to understand the concept.</p>
+
+<p>I was given to write two new programs to practice passing with match concept and it was easy since I practiced the program that was given in the lab.</p>
+
+<p><code>Number Of Words: 451,</code> <code>Average Reading Time: 4-5 minutes</code></p>
+  <footer>
+    <a href='/2022/09/lab-05.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/09/lab-04.html'>Lab 04</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-09-22" pubdate="true">2022-09-22</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-04---functions-as-values--recursion--scribble--modules">Lab 04 - Functions as Values / Recursion / Scribble / Modules</h1>
+
+<h2 id="questions-from-the-previous-lab">Questions from the previous Lab</h2>
+
+<p>Testing is very important for dynamically because of the design of the language. An object oriented language is designed to mutate the state and change it around. Also, many of the object oriented languages facilitate visibility and access of shared internal state such as encapsulation, scoping. When a state mutates in any language, testing is the best option to make sure everything is working fine. <a href="https://www.codemag.com/article/1206051/The-%E2%80%9CDanger%E2%80%9D-of-Dynamic-Languages" title="Dynamically Typed Languages">Dynamically Typed Languages</a>.</p>
+
+<p>Some software problems are hard to find with testing. For instance, Calculation errors and logic errors are hard to find with testing. Sometimes data type mismatch causes calculation errors.</p>
+
+<p>It is hard to do unit testing for mutable state because it is hard to predict and maintain because the behavior of a method that depends on mutable global state is not possible to predict by checking th source code. Therefore, it is important to consider the current value and the sequence of events that could change it earlier.</p>
+
+<h2 id="lab--04">Lab &ndash; 04</h2>
+
+<ol>
+ <li>
+  <p><code>#lang racket, #lang slideshow</code> - This is very similar to importing packages in Java.</p></li>
+ <li>
+  <p><code>(+ 1 2)</code> - This is similar to returning the addition of 1 and 2.</p></li>
+ <li>
+  <p><code>(rectangle 10 10)</code> - Similar to a method called in Java passing values.</p></li>
+ <li>
+  <p><code>(define r 10)</code> - similar to initializing vaiable in Java (int r = 10;).</p></li>
+ <li>
+  <p><code>(define (square x) (rectangle x x))</code> - Declaring a method.</p></li>
+ <li>
+  <p><code>(colorize (square 10) "red")</code> - Method Call</p></li>
+ <li>
+  <p><code>(let* ([x 10] [y (+ x 10)]) (* x y))</code> - int x = 10; int y = x+10; return x*y;</p></li></ol>
+
+<p>Racket functions are very useful and apply function is one function that we learned in the lab and it helps to reduce the repeated code in definitions. Basically, apply function collect all the arguments and make it as one argument and then can also add it to a list. Also, recursion is one of the new concepts learned in the Lab 04. Recursion is very useful and it has many advantages and disadvantages as well. Scribble is also a new concept which is a markup language by frog. Scribble is easily extensible using Racket. Also, Scribble a good example for a Domain Specific Language and it is for producing documents. Also, learnt about Racket Modules, submodules, require and provide.</p>
+
+<p>I learned how to write modules and functions in racket effectively in this lab. I was able to understand unit testing very well. Also, I was able to practice Git Bisect in this lab which helped me to understand that concept very well. The modules were interesting to me because it is similar to java methods, but in java we use a totally differeny syntax to create a method.</p>
+
+<p>In this lab we were given to read the racket guide to understand Modules. However, when I read it first I did not understand it properly, after reading it carefully I was able to understand it fully.</p>
+
+<p><code>Number Of Words: 488,</code> <code>Average Reading Time: 5-6 minutes</code></p>
+  <footer>
+    <a href='/2022/09/lab-04.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/09/scribble-demo.html'>Scribble Demo</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-09-21" pubdate="true">2022-09-21</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<p>Replace this with your post text. Add one or more comma-separated
+Tags above. The special tag &lsquo;DRAFT&lsquo; will prevent the post from being
+published.</p>
+  <footer>
+    <a href='/2022/09/scribble-demo.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/09/lab03.html'>Lab03</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-09-15" pubdate="true">2022-09-15</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-03---racket-unit-tests--git-bisect--test-coverage-in-racket">Lab 03 - Racket Unit Tests / GIT Bisect / Test Coverage in Racket</h1>
+
+<h2 id="questions-from-the-previous-lab">Questions from the previous Lab</h2>
+
+<p>&ldquo;DrRacket&rdquo; is a good IDE and it is a bit different from what I have used before. &ldquo;DrRacket&rdquo; has the feature to display all the places an identifier have been used when I mouses over and identifier and I have never seen this feature in other IDEs that I used. Also, racket is a simple software and easy to use because the size of the application is not too big. I learned about &ldquo;Racket&rdquo; from the <a href="https://racket-lang.org/" title="Racket">Racket</a></p>
+
+<p>I have been using text editors to code for a long time and I started using IDEs recently. From my perspective, a text editor is a computer tool used to edit plain text files. However, IDEs are more complex than a text editor because they provide software environment for developers to write codes easily and provide all the developer tools as well.</p>
+
+<p>Long term for REPL is Read-Eval-Print Loop and it is basically read user inputs and evaluate and then the results will be returned to the user. REPL is very interactive to explore tools available in environments or programming languages.</p>
+
+<p>I learned new git concepts in this lab such as remote, merging, and conflict. A remote is a git repository that is hosted on the internet or another network. I followed a very useful tutorial about this on this <a href="https://www.gitkraken.com/learn/git/tutorials/what-is-git-remote" title="Website">Website</a>. Also, git merging is putting a forked history back together again. For instance, you can cut out a branch from master branch and after you finish work on your branch you can merge your branch to the master branch. I learned about merging from the <a href="https://www.atlassian.com/git/tutorials/using-branches/git-merge" title="Tutorial">Tutorial</a>. Morover, conflicting means if two people try to edit the same file and the same line in two different branches and tries to merge them or in one branch the file is deleted, but in the other branch the file is edited. <a href="https://www.atlassian.com/git/tutorials/using-branches/merge-conflicts" title="Tutorial">Tutorial</a>.</p>
+
+<p>Also, I learned about unit tests in Racket which is interesting and I practiced with a <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/labs/L03/_file.rkt/" title="code">code</a>.  that was given to us in the lab. I used <code>(check-equal? (my-+ 1 1) 2 "Simple addition")</code> and <code>(check-equal? (my-* 1 2) 2 "Simple multiplication")</code> to practice.</p>
+
+<p>I also, learned about Test Coverage tool. It is a great tool identify known bugs and odd behavior. It shows all the issues highlighted in yellow which is easier to identify.</p>
+
+<p>Anotther thing that I learned is "<code>git bisect</code>". This is used to discover whether the commit has introduced a bug in the code it helps to track down the commit where the code works and where it does not work. I used "<code>git bisect --run "raco test file.rkt</code>" to practice. Also, I practiced "<code>git revert</code>" command to undo bad commits.</p>
+
+<p>I&rsquo;m familiar with <code>"git bisect"</code> and <code>"git revert"</code> but unit test in Racket and Test coverage tool in DrRacket is new to me and it was interesting to learn.</p>
+
+<p>I needed more practice with Racket because Racket was new to me and this was a very good practice to me. I learned to write recursive functions and submodules with Racket. Also, Racket test coverage tool was interesting to learn.</p>
+
+<p>I was struggling with the racket recursive functions, but managed to get help from the TA and I was able to understand the concept.</p>
+
+<p><code>Number Of Words: 490,</code> <code>Average Reading Time: 5-6 minutes</code></p>
+  <footer>
+    <a href='/2022/09/lab03.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<article>
+  <header>
+    <h2><a href='/2022/09/lab02.html'>Lab02</a></h2>
+    <p class='date-and-tags'>
+<time datetime="2022-09-12" pubdate="true">2022-09-12</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-02---git-tutorial-continued--racket-tutorial--git-clone-multiple-repos">Lab 02 - GIT Tutorial Continued / Racket Tutorial / GIT Clone (Multiple Repos)</h1>
+
+<p>I learned about git grep in part one of the lap and git grep is a very useful tool to find occurences of strings in the git repository which helps to delete and modify unwanted strings in the project. I used <a href="https://git-scm.com/docs/git-grep" title="GIT GREP">Git Grep</a> as additional reference and the command I used is "<code>git grep disqus</code>". Also, I learned how to check what is about to be commited by using "<code>git diff --cached</code>" and it will only dsiplay the changes of tracked files that are in staging area. I used <a href="https://git-scm.com/docs/git-diff" title="GIT DIFF">Git Diff</a> as a reference. Moreover, I learned an additonal command that I did not previously which is "<code>git commit -a</code>" and this command helps to add modified files to the index, and commit in one step, but it will not add new files. Furthermore, I learned about cleaning up generated files using "<code>raco frog --clean</code>" command and these files generated by some tools we use based on some source files and it is a common practice not to track generated files in version control. I can use "<code>git diff --stat</code>" command to check what is changed after cleaning he generated files I used <a href="https://docs.racket-lang.org/frog/Quick_start.html?q=frig#%28part._.Project_file_tree%29" title="Generated Files">Generated Files</a> as a source to identify the generated file. One more new thing I learned is to check the project history using "<code>git log</code>" command and we can add different keywords to the end and such as "<code>-p</code>" and "<code>--stat --summary</code>" to get the output based on your need. In addition, I learned about &ldquo;Racket&rdquo; which is a modern functional programming laguage and I learned how to install, run programs and debug with &ldquo;Racket&rdquo;. Some programs I wrote are drawing shapes and printing out mesages. Also, I learned about &ldquo;Racket&rdquo; functions, scope and Lists using <a href="https://docs.racket-lang.org/quick/index.html" title="Racket Tutorial">Racket Tutorial</a>.</p>
+
+<p>Working in multiple git repos is familiar to me since I was using git a lot when I did my co-op term. I use git commands like "<code>git clone</code>" and many more related to git while I was working. However, &ldquo;Racket&rdquo; was a new experience for since I did not have any background on &ldquo;Racket&rdquo;.</p>
+
+<p>I&rsquo;m very bad at writing a commit message while committing my changes, and I practiced writing a good commit message and I asked the person who sat next to me in the lab to review my commit message to make sure it is understandable to him. I also followed <a href="https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/" title="Commit Message Tutorial">Commit Message Tutorial</a> to learn how to write a good commit message. Also, I&rsquo;m practicing how to write a journal.</p>
+
+<p>&ldquo;Racket Tutorial&rdquo; was one thing that I got interested and it was interesting to learn about the &ldquo;Racket&rdquo; functions which can do many more things than they actually shows.</p>
+
+<p>The lab instructions were crystal clear and it was easy to follow and understand. After going home I managed to clone the repository to my personal machine and see my changes following the lab instruction and without the help of the instructor.</p>
+
+<p><code>Number Of Words: 486,</code> <code>Average Reading Time: 5 minutes</code></p>
+  <footer>
+    <a href='/2022/09/lab02.html'>&hellip; more &hellip;</a>
+  </footer>
+</article>
+<footer>
+ <ul class="pagination">
+  <li class="page-item"><a class="page-link" href="/tags/PUBLISHED.html">
+    <quote>&larr;</quote></a></li>
+  <li class="page-item"><a class="page-link" href="/tags/PUBLISHED.html">1</a></li>
+  <li class="page-item active"><a class="page-link" href="/tags/PUBLISHED-2.html">2</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/PUBLISHED-3.html">3</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/PUBLISHED-3.html">
+    <quote>&rarr;</quote></a></li></ul></footer>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+        <p>Using <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>.</p>
+        <p><em>Your legal notice here</em>.</p>
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

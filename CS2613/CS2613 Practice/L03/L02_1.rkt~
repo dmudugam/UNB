@@ -1,0 +1,7 @@
+#lang racket
+
+(define (my-map f lst)
+  (cond
+   [(empty? lst) empty]
+   [else (cons (f (first lst))
+               (my-map f (rest lst)))]))

@@ -1,0 +1,20 @@
+#lang slideshow
+(define (my-map f lst)
+  (cond
+   [(empty? lst) empty]
+   [else (cons (f (first lst))
+               (my-map f (rest lst)))]))
+
+(define (rainbow p)
+  (map (lambda (color)
+         (colorize p color))
+       (list "red" "orange" "yellow" "green" "blue" "purple")))
+
+(define (rainbow2 p)
+  (define (color-mapper p color-list)
+(cond
+   [(empty? color-list) empty]
+   [else (cons (f (first color-list))
+               (color-mapper f (rest color-list)))]))
+                                                                            
+  (color-mapper p  (list "red" "orange" "yellow" "green" "blue" "purple")))

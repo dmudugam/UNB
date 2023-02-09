@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Lab 12</title>
+    <meta name="description" content="Lab 12 - Completing Test Coverage for Village State / Testing Random Robot 1 & 2 / Robot with a Route:  In Lab 12, I finished the practice example I did in Lab 11 about the mail delivery robot. The delivery robot represents a graph data structure. The gra...">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="PUBLISHED">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="http://www.example.com/2022/10/lab-12.html">
+    <link rel="next" href="/2022/10/lab-11.html">
+    <link rel="prev" href="/2022/10/lab-13.html">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+
+      <a href="/index.html" class="navbar-brand">My Blog Brand</a>
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbar_collapse" aria-controls="navbar_collapse"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_collapse">
+          <ul class="navbar-nav mr-auto">
+
+
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b>
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/tags/PUBLISHED.html">PUBLISHED</a>
+              </div>
+            </li>
+
+            <li>
+              <a class="nav-link" href="/About.html">About</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.atom.xml">Atom</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.rss.xml">RSS</a>
+            </li>
+          </ul>
+      </div>
+
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+
+
+          <article>
+  <header>
+    <h1>Lab 12</h1>
+    <p class='date-and-tags'>
+<time datetime="2022-10-25" pubdate="true">2022-10-25</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-12---completing-test-coverage-for-village-state--testing-random-robot-1--2--robot-with-a-route">Lab 12 - Completing Test Coverage for Village State / Testing Random Robot 1 &amp; 2 / Robot with a Route</h1>
+
+<p>In Lab 12, I finished the practice example I did in Lab 11 about the mail delivery robot. The delivery robot represents a graph data structure. The graph is about the village of Meadowfield which is not very big and the robot delivery mails to 11 different places via 14 roads. The places are as follows,</p>
+
+<pre>
+const roads = [
+  "Alice's House-Bob's House",   "Alice's House-Cabin",
+  "Alice's House-Post Office",   "Bob's House-Town Hall",
+  "Daria's House-Ernie's House", "Daria's House-Town Hall",
+  "Ernie's House-Grete's House", "Grete's House-Farm",
+  "Grete's House-Shop",          "Marketplace-Farm",
+  "Marketplace-Post Office",     "Marketplace-Shop",
+  "Marketplace-Town Hall",       "Shop-Town Hall"
+];</pre>
+
+<p>In this lab, I completed the test coverage for the funtions that I wrote in the previous lab. I used "
+ <i>nyc jasmine</i>" to check the test coverage. Also, I added a new test case to move the robot to an invalid destination and adds a parcel that is not carried by the robot. Also, I did white box testing and black box testing for this program. Moreover, I did unit testing for the robot number 1, I created in the previous lab using a function called 
+ <i>runRobot</i>. Furthermore, I tested the robot number 2 I created in the previous lab using a functions called 
+ <i>randomPick and randomRobot</i> by sending random robots to random locations. Also, one annoying thing about sending random robots to random locations is that we get different outputs each time. After, adding all the test cases, I was able to complete 100% test coverage. In addition, my testing did not distinguish two robots and because of that I had to stop using jasmine and use a function called 
+ <i>compareRobot</i> to compare and test two robots. 
+ <i>Racket lists are similar to this type of recursion when I compare this concept with racket.</i></p>
+
+<p>As I mentioned, in the previous lab, the graph data structure is new to me and since I'm familiar with java objects and class files it was easy for me to understand some of the concepts that we discussed in the lab. However, reading the resources given in the lab exercise helped me a lot to understand about the concepts discussed in this lab.</p>
+
+<p>The random robot function was quite interesting to me specially, the graphical representation of the robots movement was amazing. It was hard for me to understanding how JavaScript is working with the graph data structure, but after doing some practice I was able to understand most of the concepts.</p>
+
+<p>In the lab, there were some resources given to read and understand some concepts by my self. In the begining it was difficult for me to understand, but after the instructor explained the concepts, I was able to understand.</p>
+
+<p><code>Number Of Words: 460,</code> <code>Average Reading Time: 4-5 minutes</code></p>
+<!-- more-->
+  <footer>
+  <div class="row justify-content-center">
+    <nav aria-label="Page Navigation">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="/2022/10/lab-11.html"
+             aria-label="Previous">
+            <span aria-hidden="true">&larr; Lab 11</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/2022/10/lab-13.html"
+             aria-label="Next">
+            <span aria-hidden="true">Lab 13 &rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+        <p>Using <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>.</p>
+        <p><em>Your legal notice here</em>.</p>
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

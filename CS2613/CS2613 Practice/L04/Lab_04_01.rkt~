@@ -1,0 +1,5 @@
+#lang slideshow
+
+;Part_5
+(define (series mk)
+  (hc-append 4 (mk 5) (mk 10) (mk 20)))

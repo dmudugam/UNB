@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Lab 10</title>
+    <meta name="description" content="Lab 10 - Methods / Prototypes / Classes / JavaScript Arrays / Array Methods / Recursion:  In Lab 10, I learned about JavaScript methods and objects. JavaScript methods are actions that can be performed on objects and a JavaScript method is a property cont...">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="PUBLISHED">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="http://www.example.com/2022/10/lab-10.html">
+    <link rel="next" href="/2022/10/lab-09.html">
+    <link rel="prev" href="/2022/10/lab-11.html">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+
+      <a href="/index.html" class="navbar-brand">My Blog Brand</a>
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbar_collapse" aria-controls="navbar_collapse"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_collapse">
+          <ul class="navbar-nav mr-auto">
+
+
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b>
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/tags/PUBLISHED.html">PUBLISHED</a>
+              </div>
+            </li>
+
+            <li>
+              <a class="nav-link" href="/About.html">About</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.atom.xml">Atom</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.rss.xml">RSS</a>
+            </li>
+          </ul>
+      </div>
+
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+
+
+          <article>
+  <header>
+    <h1>Lab 10</h1>
+    <p class='date-and-tags'>
+<time datetime="2022-10-17" pubdate="true">2022-10-17</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-10---methods--prototypes--classes--javascript-arrays--array-methods--recursion">Lab 10 - Methods / Prototypes / Classes / JavaScript Arrays / Array Methods / Recursion</h1>
+
+<p>In Lab 10, I learned about JavaScript methods and objects. JavaScript methods are actions that can be performed on objects and a JavaScript method is a property containing a function defintion <a href="https://www.w3schools.com/js/js_object_methods.asp" title="JavaScript Methods">JavaScript Methods</a>. In JavaScript, "<code>this</code>" keyword refers to an object. In JavaScript, when the function method is called as "<code>object.method()</code>", the special variable "<code>this</code>" is defined to mean the current object. Also, I learned about Prototypes. Prototypes are the mechanism by whic JavaScript objects inherits features from one another <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes" title="JavaScript Prototype">Prototype</a>. I practiced this concept using an example method which inherited from the prototype, but the fields were not inherited. It is helpful because, it allows to easily define methods to all instances of a particular object. Moreover, I learned about JavaScript classes which is not very similar to Java classes. JavaScript version "<code>ES2015</code>", now provides the "<code>class</code>" keyword to concisely generate constructors and prototypes. In JavaScript, "<code>new</code>" keyword is used along with the prototype property of a constructor. Below is the sample practice program I used in the lab to practice the concept,</p>
+
+<pre>
+function Time(hours, mins){
+    this.hours=hours;
+    this.mins=mins;
+}
+
+Time.prototype.plus=function (other) {
+    let raw=timePlus(this,other);
+    return new Time(raw.hours, raw.mins);
+}
+
+G = new Time(20,59);
+H = new Time(11,11);
+
+I=G.plus(H);
+console.log(I);</pre>
+
+<p>Also, I learned about the JavaScript arrays which are implemented as objects and because of that sometime their behaviour is surprising. I practiced the array concept using few practice problems given in the lab exercises. The first practice program I wrote was to calculate the sum if a range of an array whichi is easier. Furthermore, I learned about array methods. JavaScript has some higher order methods that can take functions as arguments. Also, JavaScript "
+ <i>reduce</i>" function is similar to "
+ <i>foldl</i>" in racket. "
+ <i>forEach</i>" function is different from "
+ <i>map</i>" function in racket because it does not produce a list, however, it helps to iterate through the list with giving out of bound errors. Also, I learned about recursion in JavaScript which is the same concept in racket and Java as well but the way of writing recursion methods is a lot similar to Java.</p>
+
+<p>Arrays and Recursion concepts were familiar to me since I have worked with Java before, but prototypes was a new concept for me. However, it did not take much time to get familiar with prototypes because I learned a similar kind concept in racket.</p>
+
+<p>I practiced writing recursive methods in JavaScript and I also practiced writing JavaScript classes even though I have written Java classes, Writing JavaScript classes is a bit different than writing Java classes.</p>
+
+<p>The concept of prototypes surprised me because I did not know a concept like exist in JavaScript and it also helps to reduce the number of objects that need to be created which helps to write more efficent programs.</p>
+
+<p>I was given to write some practice examples on my own and it was hard to write it at first because some of the concepts were new to me like prototypes, but I was able to do it after following the instructions.</p>
+
+<p><code>Number Of Words: 476,</code> <code>Average Reading Time: 5-6 minutes</code></p>
+<!-- more-->
+  <footer>
+  <div class="row justify-content-center">
+    <nav aria-label="Page Navigation">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="/2022/10/lab-09.html"
+             aria-label="Previous">
+            <span aria-hidden="true">&larr; Lab 09</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/2022/10/lab-11.html"
+             aria-label="Next">
+            <span aria-hidden="true">Lab 11 &rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+        <p>Using <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>.</p>
+        <p><em>Your legal notice here</em>.</p>
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

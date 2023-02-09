@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Lab 15</title>
+    <meta name="description" content="Lab 15 - Globbing and List comprehensions / Dictionary Comprehensions / Filtered List Comprehensions / Using format:  In Lab 15, I learned about Globbing and list comprehensions, a list comprehension provides a compact way of mapping a list into another l...">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="PUBLISHED">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="http://www.example.com/2022/11/lab-15.html">
+    <link rel="next" href="/2022/10/lab-14.html">
+    <link rel="prev" href="/2022/11/lab-16.html">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div class="container">
+
+      <a href="/index.html" class="navbar-brand">My Blog Brand</a>
+
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+              data-target="#navbar_collapse" aria-controls="navbar_collapse"
+              aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar_collapse">
+          <ul class="navbar-nav mr-auto">
+
+
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b>
+              </a>
+
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/tags/PUBLISHED.html">PUBLISHED</a>
+              </div>
+            </li>
+
+            <li>
+              <a class="nav-link" href="/About.html">About</a>
+            </li> 
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.atom.xml">Atom</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/feeds/all.rss.xml">RSS</a>
+            </li>
+          </ul>
+      </div>
+
+      </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+
+
+          <article>
+  <header>
+    <h1>Lab 15</h1>
+    <p class='date-and-tags'>
+<time datetime="2022-11-03" pubdate="true">2022-11-03</time> :: <span class="tags"><a href="/tags/PUBLISHED.html">PUBLISHED</a></span></p>
+    <p class='authors'>By: Dineth Mudugamuwa Hewage</p>
+  </header>
+
+<h1 id="lab-15---globbing-and-list-comprehensions--dictionary-comprehensions--filtered-list-comprehensions--using-format">Lab 15 - Globbing and List comprehensions / Dictionary Comprehensions / Filtered List Comprehensions / Using format</h1>
+
+<p>In Lab 15, I learned about Globbing and list comprehensions, a list comprehension provides a compact way of mapping a list into another list by applying a function to each the elements of the list. List comprehensions are really closer to a convenient syntax for map, which I used in Racket. I practiced list comprehensions and globbing using the practice program that was given in the lab which is called 
+ <i>globex.py</i>. Also, I practiced a concept called 
+ <i>globbing</i>. The use of globbing is that it returns all the file paths that matches a specific patten. In addition, I got to practice 
+ <i>lambda</i> functions in the same program which is pretty much similar to the racket lambda function. Another concept that I learned in the lab was 
+ <i>Dictionary Comprehensions</i>. A dictionary comprehension is like a list comprehension, but it construct a dictionary instead of a list. Dictionaries are powerful built in data structures i Python that stores data as key-value pairs. Also, I learned about filtered list comprehensions using a program I wrote in Assignment 1 using Racket which is called 
+ <i>drop_divisible</i> where the program drops values that can be divided by 3 except for 3. A list comprehension provides a compact way of mapping a list into another list by applying a function to each element of the elements of the list without the use of if clause. I practiced the concept with a completing a program that was given in the lab and the program is as follows,</p>
+
+<pre>
+from math import sqrt,ceil
+
+def drop_divisible(n,lst):
+    return [ j for j in lst if j==n or j % n != 0]
+
+def sieve_with(candidates, lst):
+    for c in candidates:
+        lst=drop_divisible(c,lst)
+    return lst
+
+def sieve(n):
+    return sieve_with(range(2,ceil(sqrt(n))+1), range(2,n))</pre>
+
+<p>Dictionaries and globbing were new to me since I have not used those concepts. However, I am familiar with lists and using format because I have hands-on experience because I learned them in racket. Also, lambda function is familiar to me because I have learned that before.</p>
+
+<p>I practice few skills in this lab such as writing lists and using format. Also, I learned how to use dictionaries and globbing.</p>
+
+<p>I have not heard about the concept of globbing and I heard it for the first time. It is interesting to know that there is concept like that where you can get all the path of file that match a certain pattern.</p>
+
+<p>In the lab, a very good resouce was given to read to learn more about python concepts called <a href="http://www.cs.unb.ca/~bremner/teaching/cs2613/books/diveintopython3/your-first-python-program.html#divingin">DiP3</a> which is very useful and informative. Also, some extra resources were about <a href="https://docs.python.org/3/reference/expressions.html#lambda">lambda functions</a>, <a href="https://docs.python.org/3/library/functions.html#map">map function</a>, and <a href="https://docs.python.org/3/library/stdtypes.html#typesseq-range">range function</a> in Python.</p>
+
+<p><code>Number Of Words: 470</code> <code>Average Reading Time: 4-5 minutes</code></p>
+<!-- more-->
+  <footer>
+  <div class="row justify-content-center">
+    <nav aria-label="Page Navigation">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="/2022/10/lab-14.html"
+             aria-label="Previous">
+            <span aria-hidden="true">&larr; Lab 14</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="/2022/11/lab-16.html"
+             aria-label="Next">
+            <span aria-hidden="true">Lab 16 &rarr;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <hr />
+        <p>Site generated
+        by <a href="https://github.com/greghendershott/frog">Frog</a>,
+        the <strong>fr</strong>ozen bl<strong>og</strong> tool.</p>
+        <p>Using <a href="http://twitter.github.com/bootstrap/index.html">Bootstrap</a>.</p>
+        <p><em>Your legal notice here</em>.</p>
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="/js/jquery-3.2.1.slim.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

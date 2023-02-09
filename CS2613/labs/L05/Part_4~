@@ -1,0 +1,49 @@
+#lang racket
+
+(module+ test
+  (require rackunit))
+
+(define (count-odds lst)
+  (cond
+    [(empty? lst) 0]
+    [(odd? (first lst)) (add1 (count-odds (rest lst)))]
+    [else (count-odds (rest lst))]))
+
+(module+ test
+  (check-equal? (count-odds (list 3 2 1 1 2 3 4 5 5 6)) 6))
+
+
+(define (count-odds2 lst)
+  (define (helper lst odds)
+    (cond
+      [(empty? lst) odds]
+      [(odd? (first lst)) (helper (rest lst) (add1 odds)      )]
+      [else (helper   (rest lst)   odds          )]))
+  (helper lst 0))
+
+(module+ test
+  (check-equal? (count-odds2 (list 3 2 1 1 2 3 4 5 5 6)) 6)
+  (define random-list (build-list 100 (lambda (x) (random 1 100))))
+  (check-equal? (count-odds random-list) (count-odds2 random-list)))
+
+
+
+(define (count-odds3 lst)
+  (for/fold
+      ([odds 0])
+      ([n lst])
+    (cond
+      [(odd? n) (add1 odds)]
+      [else odds])))
+
+(module+ test
+  (check-equal? (count-odds3 (list 3 2 1 1 2 3 4 5 5 6)) 6)
+  (check-equal? (count-odds random-list) (count-odds3 random-list))
+  (check-equal? (count-odds3 (list 3 2 1 1 2 3 4 5 5 6)) 6))
+
+
+(define big-list (range 50000000))
+(for* ([fun (list count-odds count-odds2 count-odds3)]
+       [rep '(1 2 3)])
+  (printf "~a ~a\n" fun rep)
+  (time  (fun big-list)))
