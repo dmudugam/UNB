@@ -1,0 +1,49 @@
+Afrojack, Ben (5)
+Bieber, Justin (4)
+Carter, John (3)
+Derick, Simon (1)
+Eric, Arnold (2)
+
+Removed Items : 
+
+Afrojack, Ben (5)
+Carter, John (3)
+Eric, Arnold (2)
+
+After Removing: 
+
+Bieber, Justin (4)
+Derick, Simon (1)
+
+List in reverse order: 
+
+Holmes, Gordan (8)
+Garner, Ian (7)
+Fraser, Emily (6)
+Derick, Simon (1)
+Bieber, Justin (4)
+
+Removing an item not in the list: Afrojack, Ben (5)
+
+Item is not in the list.
+
+Number of Students in the list: 5
+
+Testing compareTo Method functions: 
+
+Sort by First name when the last names are same: 
+
+Mithuranga, A (13)
+Mithuranga, B (9)
+Mithuranga, C (11)
+Mithuranga, D (12)
+Mithuranga, E (10)
+
+Sort by Student ID when the last names and first names are same: 
+
+Mithuranga, Dineth (1)
+Mithuranga, Dineth (2)
+Mithuranga, Dineth (3)
+Mithuranga, Dineth (4)
+Mithuranga, Dineth (5)
+

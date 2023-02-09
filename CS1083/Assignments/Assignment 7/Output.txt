@@ -1,0 +1,10 @@
+Enter a positive integer: 
+seqR(10) is: 1
+seqM(10) is: 1
+seqI(10) is: 1
+
+Execution Times in Milliseconds (ms)
+n	Recursive	Seq(n)	Memoization	Seq(n)	Itertive	Seq(n)
+15	0.2239000	-85	0.0102000	-85	0.0015000	-85
+25	0.8883000	-7917	0.0115000	-7917	0.0019000	-7917
+35	52.5937000	-364229	0.0178000	-364229	0.0024000	-364229

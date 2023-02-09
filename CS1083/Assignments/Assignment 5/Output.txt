@@ -1,0 +1,22 @@
+TOP MOVIE GENRES
+=======================
+1. Mystery, contains: 40 movies, avg. rating: 3.34
+	Rear Window (1954); average rating: 4.39
+2. Animation, contains: 29 movies, avg. rating: 3.32
+	Close Shave, A (1995); average rating: 4.49
+3. Romance, contains: 170 movies, avg. rating: 3.30
+	Casablanca (1942); average rating: 4.46
+4. Drama, contains: 471 movies, avg. rating: 3.27
+	Entertaining Angels: The Dorothy Day Story (1996); average rating: 5.00
+5. Sci-Fi, contains: 76 movies, avg. rating: 3.24
+	Star Kid (1997); average rating: 5.00
+6. Thriller, contains: 176 movies, avg. rating: 3.14
+	Close Shave, A (1995); average rating: 4.49
+7. Comedy, contains: 355 movies, avg. rating: 3.09
+	Close Shave, A (1995); average rating: 4.49
+8. Action, contains: 188 movies, avg. rating: 3.01
+	Star Wars (1977); average rating: 4.36
+9. Fantasy, contains: 16 movies, avg. rating: 2.98
+	Star Kid (1997); average rating: 5.00
+10. Horror, contains: 63 movies, avg. rating: 2.65
+	Psycho (1960); average rating: 4.10

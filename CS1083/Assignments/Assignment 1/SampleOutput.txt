@@ -1,0 +1,110 @@
+***********************************ADD PRODUCTS*********************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Pencil 	 (id:10002)	qty: 40 0 ordered		$0.25	$10.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 4 0 ordered		$0.65	$2.60
+
+Ball 	 (id:10005)	qty: 0 0 ordered		$1.00	$0.00
+
+Total								$137.10
+*****************************ADD TOO MANY PRODUCTS*****************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Pencil 	 (id:10002)	qty: 40 0 ordered		$0.25	$10.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 4 0 ordered		$0.65	$2.60
+
+Ball 	 (id:10005)	qty: 0 0 ordered		$1.00	$0.00
+
+Total								$137.10
+********************************REMOVE PRODUCT*********************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Ball 	 (id:10005)	qty: 0 0 ordered		$1.00	$0.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 4 0 ordered		$0.65	$2.60
+
+Total								$127.10
+******************************ADD ANOTHER PRODUCT******************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Ball 	 (id:10005)	qty: 0 0 ordered		$1.00	$0.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 4 0 ordered		$0.65	$2.60
+
+Book 	 (id:10007)	qty: 35 0 ordered		$2.99	$104.65
+
+Total								$231.75
+***********************REMOVE PRODUCT NOT IN THE LIST**************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Ball 	 (id:10005)	qty: 0 0 ordered		$1.00	$0.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 4 0 ordered		$0.65	$2.60
+
+Book 	 (id:10007)	qty: 35 0 ordered		$2.99	$104.65
+
+Total								$231.75
+********************************SELL A PRODUCT*********************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Ball 	 (id:10005)	qty: 0 0 ordered		$1.00	$0.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 3 0 ordered		$0.65	$1.95
+
+Book 	 (id:10007)	qty: 35 0 ordered		$2.99	$104.65
+
+Total								$231.10
+**********************SELL A PRODUCT THAT HAS NO STOCK*************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Ball 	 (id:10005)	qty: 0 0 ordered		$1.00	$0.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 3 0 ordered		$0.65	$1.95
+
+Book 	 (id:10007)	qty: 35 0 ordered		$2.99	$104.65
+
+Total								$231.10
+*****************************ORDER PRODUCTS************************************
+
+
+Scissors 	 (id:10001)	qty: 20 0 ordered		$5.25	$105.00
+
+Ball 	 (id:10005)	qty: 0 10 ordered		$1.00	$0.00
+
+Eraser 	 (id:10003)	qty: 30 0 ordered		$0.65	$19.50
+
+Pen 	 (id:10004)	qty: 3 10 ordered		$0.65	$1.95
+
+Book 	 (id:10007)	qty: 35 0 ordered		$2.99	$104.65
+
+Total								$231.10

@@ -1,0 +1,47 @@
+List 1: 
+11039926010	Digital Kitchen Scale	3
+11798411010	KitchenAid Stand Mixer	1
+24179114710	Autumn Plaid Tablecloth	2
+96796133410	Tan Cotton Blanket	2
+11798411350	Electric Kettle	1
+96796133620	Red Table	1
+
+Item added to List 1: 
+11039926010	Digital Kitchen Scale	3
+11798411010	KitchenAid Stand Mixer	1
+11881701910	Rice Cooker & Steamer	2
+24179114710	Autumn Plaid Tablecloth	2
+96796133410	Tan Cotton Blanket	2
+11798411350	Electric Kettle	1
+96796133620	Red Table	1
+
+List 2: 
+11781701910	Cast Iron Round Griddle	2
+11798009510	Espresso Machine	1
+11798112010	NutriBullet Blender	1
+11798411010	KitchenAid Stand Mixer	2
+11798411100	Blender	3
+11798411200	Air Fryer	1
+11798411350	Electric Kettle	1
+96796133520	Rubber Carpet	3
+11039926000	Wall paint	2
+
+There are 12 items found in one wish list but not the other
+Merged wish lists:
+11039926010	Digital Kitchen Scale	3
+11781701910	Cast Iron Round Griddle	2
+11798009510	Espresso Machine	1
+11798112010	NutriBullet Blender	1
+11798411010	KitchenAid Stand Mixer	2
+11798411010	KitchenAid Stand Mixer	1
+11798411100	Blender	3
+11798411200	Air Fryer	1
+11798411350	Electric Kettle	1
+11881701910	Rice Cooker & Steamer	2
+24179114710	Autumn Plaid Tablecloth	2
+96796133410	Tan Cotton Blanket	2
+11798411350	Electric Kettle	1
+96796133520	Rubber Carpet	3
+11039926000	Wall paint	2
+96796133620	Red Table	1
+
