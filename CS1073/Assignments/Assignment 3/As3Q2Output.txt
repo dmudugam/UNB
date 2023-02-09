@@ -1,0 +1,20 @@
+
+Card Holder Name - Mateo Garcia
+Card Number - 1234123412341234
+Balance - 158.55
+Interest - 31.710000000000004
+
+Card Holder Name - Sarah Jones
+Card Number - 246813578642
+Balance - 1175.89
+Interest - 199.90130000000002
+
+Card Holder Name - Justin Tremblay
+Card Number - 234510106789
+Balance - 0.0
+Interest - 0.0
+
+Card Holder Name - Jill Thomas
+Card Number - 3579864278901234
+Balance - 42.80000000000001
+Interest - 5.350000000000001

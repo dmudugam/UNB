@@ -1,0 +1,12 @@
+Worker's Name & Job Title        Rate of Pay     Pay this week
+=========================        ===========     =============
+Jeffrey Kingston (Busser)        $11.75 /hr      $211.50
+Susan Grant-Long (Busser)        $11.95 /hr      $173.27
+Leroy Haines (Dishwasher)        $12.50 /hr      $525.00
+Jonathan Gorman (Server)         $12.50 /hr      $586.77
+Tanya Masterson (Server)         $11.75 /hr      $213.30
+Brittany Phillips (Server)       $13.50 /hr      $525.45
+Kathy Cox (Executive Chef)       $24.50 /hr      $1,146.38
+Thomas McLean (Sous Chef)        $19.50 /hr      $316.00
+Nathaniel Paul (Sous Chef)       $20.75 /hr      $504.50
+Eleanor Ryan (Pastry Chef)       $18.00 /hr      $747.00

@@ -1,0 +1,8 @@
+The Triangle TL is an EQUILATERAL Triangle
+
+The Triangle TR is an Right Angle Triangle
+
+The Triangle TL is NOT a Right Angle Triangle
+
+The Triangle TR is NOT an EQUILATERAL Triangle
+

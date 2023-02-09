@@ -1,0 +1,7 @@
+Please enter your optimal sleep time (in hours) : Next, enter your recorded sleep history values (in hours). 
+Enter a negative number when done : 
+Your sleep report: 
+3 nights total 
+2 nights below your optimal sleep time 
+Lowest sleep time: 5 hours
+Average sleep time: 7.0 hours

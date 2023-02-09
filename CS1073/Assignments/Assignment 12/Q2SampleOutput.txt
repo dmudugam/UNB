@@ -1,0 +1,79 @@
+
+*** Test case #1: Create a CardHolder object & test accessors
+Name:     Sally Smith
+Appt #:   152
+Phone:    454-1234
+Member #: 10000
+
+Correct result: Sally has zero kitchen items.
+
+*** Test case #2: Create a JuniorCardHolder object & test accessors
+Name:     Tommy Smith
+Appt #:   152
+Phone:    454-1234
+Member #: 10001
+Guardian: Sally Smith
+
+Correct result: Tommy has zero kitchen items.
+
+*** Test case #3: Automatically generate a member number
+Correct result: 10002 is the correct member number.
+
+*** Test case #4: Create KitchenItem objects & test accessors
+Description: Whisk
+Orig. Price: $10.00
+Restricted:  false
+
+*** Test case #5: Change phone number for both CardHolder types
+Correct result: Sally's phone number successfully changed.
+Correct result: Tommy's phone number successfully changed.
+
+*** Test case #6: Sign out one KitchenItem
+Correct result: Sally signed out an item successfully.
+Correct result: Sally has one kitchen item.
+
+*** Test case #7: Sign out multiple KitchenItems
+Correct result: Sally signed out two more items successfully.
+Correct result: Sally has three kitchen items.
+
+*** Test case #8: Intentionally exceed the sign out limit
+Correct result: Sally was prevented from signing out more than 8 kitchen items.
+
+*** Test case #9: A junior card holder tries to sign out a restricted item
+Correct result: Tommy was able to sign out an unrestricted item.
+Correct result: Tommy was prevented from signing out a restricted item.
+
+*** Test case #10: Returning the only item that was signed out
+Correct result: Tommy's item was successfully returned.
+Correct result: Tommy's list length changed appropriately.
+
+*** Test case #11: Returning an item that was not signed out
+Correct result: Unsuccessful attempt to return an item that was not signed out.
+
+*** Test case #12: Returning the first item that was signed out
+Correct result: Sally's first item was successfully returned.
+Correct result: Sally's list length changed appropriately.
+
+Confirm return: Whisk should be absent from the following list:
+Deep Fryer
+Paring Knife
+Metric Measuring Spoon Set
+Creme Brule Torch
+Kitchen Scale
+Electric Knife
+16 Quart Stock Pot
+
+*** Test case #13: Returning a mid-list item
+Correct result: Creme Brule Torch was successfully returned.
+Correct result: Sally's list length changed appropriately.
+
+Confirm return: Creme Brule Torch should be absent from the following list:
+Deep Fryer
+Paring Knife
+Metric Measuring Spoon Set
+16 Quart Stock Pot
+Kitchen Scale
+Electric Knife
+
+************* End of Test Cases ***************
+

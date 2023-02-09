@@ -1,0 +1,3 @@
+ 
+Enter the number of credit hours completed in the last year: Have you participated in a university co-op program in the last year (yes or no)? Enter yes or no: Enter your GPA: Enter the number of official university clubs, societies, or teams in which you participated last year: Do you have demonstrated financial need (yes or no)? Enter yes or no: You are eligible for a scholarship of $1600
+

@@ -1,0 +1,25 @@
+Output 1:
+
+Enter an Arabic number: 729
+The Mayan number for 729 is:
+ O
+ _  _  _  O
+ _  O  O  O  O
+
+Output 2:
+
+Enter an Arabic number: 400
+The Mayan number for 400 is:
+ O
+ U
+ U
+
+Output 3:
+
+Enter an Arabic number: -566
+Invalid input. You must enter a non-negative number.
+Please enter another Arabic number now: 416
+The Mayan number for 416 is:
+ O
+ U
+ _  _  _  O
